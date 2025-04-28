@@ -41,7 +41,7 @@ O objetivo é melhorar a qualidade geral do código, tornando-o mais legível, m
 2.  **Aplicar Princípio DRY (Don't Repeat Yourself):** Identifique e elimine a duplicação de código extraindo lógica repetida para funções, métodos ou classes reutilizáveis. Considere mover lógica genérica para módulos `utils` apropriados, se o contexto permitir.
 3.  **Remover Código Morto/Desnecessário:** Exclua quaisquer variáveis, funções, classes, imports ou blocos de código que não são utilizados ou são inalcançáveis.
 4.  **Simplificar Lógica Complexa:** Refatore condicionais aninhadas, loops complexos ou expressões booleanas complicadas para torná-los mais claros e diretos, mantendo a mesma lógica.
-5.  **Melhorar Nomenclatura e Clareza:** Garanta que nomes de variáveis, funções, classes e módulos sejam descritivos, claros e consistentes, seguindo as convenções do PEP 8.
+5.  **Melhorar Nomenclatura e Clareza:** Garanta que nomes de variáveis, funções, classes e módulos sejam descritivos, claros e consistentes, seguindo as convenções do PEP 8. (Veja também a Diretriz 14 sobre renomeação de interfaces públicas).
 6.  **Aumentar a Modularidade e Coesão (SRP):**
     *   Garanta que classes e funções tenham uma única responsabilidade bem definida.
     *   Agrupe funcionalidades relacionadas (alta coesão).
@@ -56,13 +56,20 @@ O objetivo é melhorar a qualidade geral do código, tornando-o mais legível, m
 11. **Adicionar/Melhorar Docstrings (PEP 257):** Garanta que módulos, classes, funções e métodos públicos tenham docstrings claras e completas explicando propósito, argumentos (`Args`), retornos (`Returns`) e exceções levantadas (`Raises`).
 12. **Considerar Princípios de Design (KISS):** Prefira soluções mais simples e diretas quando a complexidade não for justificada.
 13. **Refatorações Pontuais e Justificadas:** Realize modificações direcionadas. Evite reescritas massivas desnecessárias. O foco é na melhoria incremental.
+14. **Cuidado ao Renomear Interfaces Públicas:** **IMPORTANTE:** Evite renomear funções, métodos ou classes públicas a menos que o nome atual seja *significativamente* inadequado ou confuso. Priorize a manutenção da compatibilidade com testes existentes e outros módulos que possam depender desta interface. Se uma renomeação pública for *essencial* para clareza, justifique-a explicitamente no relatório de alterações. Renomear variáveis ou funções *internas* (com escopo local ou prefixadas com `_`) para melhorar a clareza é encorajado.
+
+---
+***[NOTA HISTÓRICA - REMOVER ANTES DE USAR O PROMPT EM PRODUÇÃO]***
+*A Diretriz 14 foi adicionada com base em experiências anteriores onde a renomeação agressiva de interfaces públicas pela IA, embora tecnicamente melhorasse o nome localmente, causava quebras significativas em arquivos de teste e código dependente, exigindo esforço manual considerável para correção. Esta diretriz visa mitigar esse problema, equilibrando a melhoria da nomenclatura com a estabilidade da API pública do módulo.*
+***[FIM DA NOTA HISTÓRICA]***
+---
 
 **Resultado Esperado:**
 
 1.  **Código Refatorado Completo:** A versão final e completa do arquivo (`[NOME_DO_ARQUIVO_COM_EXTENSÃO]`) após a aplicação das diretrizes, pronta para ser usada.
 2.  **Relatório Detalhado de Alterações:**
     *   Um resumo das principais melhorias realizadas.
-    *   Uma lista das alterações significativas, explicando *o quê* foi mudado e *por quê*, fazendo referência às diretrizes acima (ex: "Extraída função `X` para seguir DRY", "Adicionados type hints ao método `Y` (Diretriz 8)", "Simplificada condicional na linha Z (Diretriz 4)", "Melhorado tratamento de erro em `W` (Diretriz 9)").
+    *   Uma lista das alterações significativas, explicando *o quê* foi mudado e *por quê*, fazendo referência às diretrizes acima (ex: "Extraída função `X` para seguir DRY (Diretriz 2)", "Adicionados type hints ao método `Y` (Diretriz 8)", "Simplificada condicional na linha Z (Diretriz 4)", "Renomeada variável interna `abc` para `xyz` para clareza (Diretriz 5)", "**Justificativa para renomear função pública Z (se aplicável - Diretriz 14)**").
     *   Mencione brevemente como princípios como SRP ou KISS foram aplicados.
 
 ```
