@@ -1,9 +1,3 @@
-Vamos criar um esboço inicial para a documentação do fluxo do Método AGV, focando no ciclo principal com os agentes que definimos. Podemos salvar isso como `docs/metodo_agv_workflow_v1.0.md` no seu repositório.
-
----
-
-**`docs/metodo_agv_workflow_v1.0.md` (Rascunho Inicial)**
-
 # Método AGV: Fluxo de Trabalho v1.0
 
 Este documento descreve o fluxo de trabalho passo a passo para desenvolver software usando o Método AGV (Assistência Generativa à Velocidade), que alavanca LLMs como assistentes especializados (agentes) em diferentes fases do desenvolvimento, sob a coordenação humana.
@@ -45,10 +39,10 @@ graph LR
 ## Papéis dos Agentes (Versão Inicial)
 
 *   **Você:** Idealizador, Definidor de Requisitos, Coordenador, Validador Crítico, Tomador de Decisões Finais.
-*   **Tocrisna (Arquiteta):** Define a estrutura técnica, componentes, interfaces e padrões. Usa `Prompt_Tocrisna_Architecture_v1.0.md`.
-*   **Severino (Especificador):** Traduz requisitos de alto nível em especificações técnicas detalhadas para um módulo/feature, usando o contexto da arquitetura. Usa `Prompt_Severino_EspeciFi_v1.0.md`.
-*   **Tocle (Engenheiro):** Implementa o código funcional e os testes unitários, seguindo a arquitetura e a especificação. Também atualiza/refatora testes. Usa `Prompt_Tocle_Implementation_v1.0.md` e `Prompt_Tocle_RefatorTest_v1.0.md`.
-*   **Tolete (Refatorador):** Melhora a qualidade do código de produção existente, sem alterar a funcionalidade. Usa `Prompt_Tolete_Refatoracao_v1.0.md`.
+*   **Tocrisna (Arquiteta):** Define a estrutura técnica, componentes, interfaces e padrões. Usa `Prompts/Templates/Prompt_Tocrisna_Architecture_v1.0.md`.
+*   **Severino (Especificador):** Traduz requisitos de alto nível em especificações técnicas detalhadas para um módulo/feature, usando o contexto da arquitetura. Usa `Prompts/Templates/Prompt_Severino_EspeciFi_v1.0.md`.
+*   **Tocle (Engenheiro):** Implementa o código funcional e os testes unitários, seguindo a arquitetura e a especificação. Também atualiza/refatora testes. Usa `Prompts/Templates/Prompt_Tocle_Implementation_v1.0.md` e `Prompts/Templates/Prompt_Tocle_RefatorTest_v1.0.md`.
+*   **Tolete (Refatorador):** Melhora a qualidade do código de produção existente, sem alterar a funcionalidade. Usa `Prompts/Templates/Prompt_Tolete_Refatoracao_v1.0.md`.
 
 ## Fases Detalhadas
 
@@ -70,7 +64,7 @@ graph LR
 *   **Objetivo:** Criar o blueprint técnico do sistema.
 *   **Inputs:** Documento de Visão e Definição Inicial (da Fase 1).
 *   **Atividades:**
-    1.  Preparar o `Prompt_Tocrisna_Architecture_v1.0.md` preenchendo a seção "Contexto e Definições Iniciais".
+    1.  Preparar o `Prompts/Templates/Prompt_Tocrisna_Architecture_v1.0.md` preenchendo a seção "Contexto e Definições Iniciais".
     2.  Executar o prompt com a LLM escolhida.
     3.  Analisar criticamente o Blueprint Arquitetural gerado pela IA.
 *   **Output:** Blueprint Arquitetural Detalhado (incluindo visão geral, componentes, interfaces, estrutura de diretórios, etc.).
@@ -83,7 +77,7 @@ graph LR
     *   Descrição de alto nível da funcionalidade desejada (por Você).
     *   Blueprint Arquitetural Aprovado (da Fase 2 - especificamente as partes relevantes para esta funcionalidade).
 *   **Atividades:**
-    1.  Preparar o `Prompt_Severino_EspeciFi_v1.0.md` preenchendo a descrição de alto nível e as seções relevantes do contexto arquitetural.
+    1.  Preparar o `Prompts/Templates/Prompt_Severino_EspeciFi_v1.0.md` preenchendo a descrição de alto nível e as seções relevantes do contexto arquitetural.
     2.  Executar o prompt com a LLM.
     3.  Analisar a Especificação Técnica Detalhada gerada pela IA.
 *   **Output:** Bloco de texto contendo a Especificação Técnica Detalhada (inputs, processamento, outputs, erros, regras) para *aquela* funcionalidade.
@@ -93,7 +87,7 @@ graph LR
 
 *   **Objetivo:** Escrever o código funcional e os testes unitários para a funcionalidade especificada.
 *   **Inputs:**
-    *   `Prompt_Tocle_Implementation_v1.0.md` preenchido com:
+    *   `Prompts/Templates/Prompt_Tocle_Implementation_v1.0.md` preenchido com:
         *   Contexto Arquitetural relevante (da Fase 2).
         *   Especificação Técnica Detalhada (da Fase 2.5).
         *   Stack tecnológica e framework de teste definidos.
@@ -112,8 +106,8 @@ graph LR
 *   **Atividades (Ciclo Iterativo):**
     1.  **Revisão de Código (Você):** Ler o código gerado. Parece claro? Segue as diretrizes? A lógica parece correta?
     2.  **Execução de Testes Unitários (Você/Ambiente):** Rodar os testes gerados. Todos passam? Eles testam o que deveriam?
-    3.  **Refatoração (Opcional - Tolete):** Se o código funciona mas pode ser melhorado (clareza, DRY, etc.), usar o `Prompt_Tolete_Refatoracao_v1.0.md`. *Após refatorar, voltar ao Passo 2 (rodar testes).*
-    4.  **Ajuste de Testes (Opcional - Tocle):** Se os testes unitários precisam ser melhorados ou atualizados após refatoração do código de produção, usar o `Prompt_Tocle_RefatorTest_v1.0.md`. *Após ajustar, voltar ao Passo 2.*
+    3.  **Refatoração (Opcional - Tolete):** Se o código funciona mas pode ser melhorado (clareza, DRY, etc.), usar o `Prompts/Templates/Prompt_Tolete_Refatoracao_v1.0.md`. *Após refatorar, voltar ao Passo 2 (rodar testes).*
+    4.  **Ajuste de Testes (Opcional - Tocle):** Se os testes unitários precisam ser melhorados ou atualizados após refatoração do código de produção, usar o `Prompts/Templates/Prompt_Tocle_RefatorTest_v1.0.md`. *Após ajustar, voltar ao Passo 2.*
     5.  **Teste de Integração (Você/Ambiente):** **CRUCIAL (Incremental):** Se esta funcionalidade interage com outras já existentes, executar testes que verifiquem essa interação (podem ser manuais inicialmente ou automatizados com ajuda da IA/prompt específico se necessário).
     6.  **Commit (Você):** Se tudo estiver OK, versionar o código funcional e os testes no Git.
 *   **Output:** Código validado e integrado da funcionalidade. Base de código atualizada.
@@ -134,11 +128,12 @@ graph LR
 *   **Gerenciamento de Contexto:** Forneça apenas o contexto necessário para cada prompt. Use resumos ou documentos externos para estado de longo prazo.
 *   **Foco na Qualidade:** Mantenha as diretrizes de alta qualidade (clareza, testes, etc.) em todas as fases.
 
-    
-    O Método AGV é guiado por princípios de engenharia de software que visam maximizar a qualidade, manutenibilidade e eficiência da colaboração humano-IA. Os detalhes desses princípios estão documentados em [`principios_chave_agv.md`](./principios_chave_agv.md). Os mais importantes incluem:
+## Princípios de Engenharia de Software
 
-    *   **Integração Incremental via Interfaces Explícitas:** Define como os módulos são projetados para interagir de forma robusta e desacoplada (Ver detalhes no documento de princípios).
-    *   **Validação Humana Contínua:** Ênfase na revisão e aprovação humana em etapas críticas (Arquitetura, Especificação, Código/Testes).
-    *   **Foco na Qualidade:** Aplicação consistente de boas práticas (PEP 8, SRP, DRY, KISS, Type Hints, Docstrings, Testes).
-    *   **Gerenciamento de Contexto da IA:** Uso de prompts focados e contexto mínimo necessário.
-    *   **Iteração:** Reconhecimento de que o desenvolvimento é iterativo e ajustes nos prompts ou no código podem ser necessários.
+O Método AGV é guiado por princípios de engenharia de software que visam maximizar a qualidade, manutenibilidade e eficiência da colaboração humano-IA. Os detalhes desses princípios estão documentados em [`AGV_Method_Principios_Chave.md`](./AGV_Method_Principios_Chave.md). Os mais importantes incluem:
+
+*   **Integração Incremental via Interfaces Explícitas:** Define como os módulos são projetados para interagir de forma robusta e desacoplada (Ver detalhes no documento de princípios).
+*   **Validação Humana Contínua:** Ênfase na revisão e aprovação humana em etapas críticas (Arquitetura, Especificação, Código/Testes).
+*   **Foco na Qualidade:** Aplicação consistente de boas práticas (PEP 8, SRP, DRY, KISS, Type Hints, Docstrings, Testes).
+*   **Gerenciamento de Contexto da IA:** Uso de prompts focados e contexto mínimo necessário.
+*   **Iteração:** Reconhecimento de que o desenvolvimento é iterativo e ajustes nos prompts ou no código podem ser necessários.
