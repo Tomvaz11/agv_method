@@ -1,3 +1,7 @@
+Este prompt foi criado para orientar uma LLM — neste caso, você, no papel do agente "Severino" — na execução da função de um especificador funcional, conforme descrito a seguir.
+
+---
+
 # AGV Prompt Template: Severino v1.0 - Especificação Funcional Detalhada
 
 ## Tarefa Principal
