@@ -1,4 +1,3 @@
-```markdown
 # Método AGV: Desenvolvimento Assistido por IA (v1.0)
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento%20(v1.0)-orange)
@@ -20,7 +19,7 @@ O Método AGV é construído sobre os seguintes pilares:
 *   **Prompts "Estado da Arte":** Utiliza prompts modelo detalhados, reutilizáveis e versionados como principal mecanismo para instruir a IA, garantindo consistência e qualidade nas interações.
 *   **Iteração e Refinamento:** O método e seus artefatos (prompts, documentos) são considerados vivos e sujeitos a refinamento contínuo com base na experiência prática.
 
-➡️ **Para detalhes aprofundados sobre os princípios, consulte:** [`docs/principios_chave_agv.md`](./docs/principios_chave_agv.md)
+➡️ **Para detalhes aprofundados sobre os princípios, consulte:** [`Guides/AGV_Method_Principios_Chave.md`](./Guides/AGV_Method_Principios_Chave.md)
 
 ## 3. Os Agentes AGV (v1.0)
 
@@ -42,24 +41,34 @@ O desenvolvimento de uma funcionalidade tipicamente segue as fases:
 5.  **Revisão & Testes (Você + Tocle/Tolete):** Revisão de código, execução de testes unitários, refatoração (Tolete), ajuste de testes (Tocle), execução de testes de integração. *[Validação Humana + Iteração]*
 6.  **Integração & Próximo Ciclo:** Commit do código validado, seguir para próxima feature/módulo.
 
-➡️ **Para o fluxo detalhado passo a passo, consulte:** [`docs/metodo_agv_workflow_v1.0.md`](./docs/metodo_agv_workflow_v1.0.md)
+➡️ **Para o fluxo detalhado passo a passo, consulte:** [`Guides/AGV_Method_Workflow_v1.0.md`](./Guides/AGV_Method_Workflow_v1.0.md)
 
 ## 5. Estrutura do Repositório
 
-*   **/docs:** Contém a documentação principal do Método AGV:
-    *   `metodo_agv_workflow_v1.0.md`: O fluxo de trabalho detalhado.
-    *   `principios_chave_agv.md`: Os princípios de design e arquitetura.
-    *   `AGV_Method_State_Snapshot_vX.Y.md`: Resumos periódicos do estado da colaboração e definição do método (para continuidade).
-    *   `README_Prompt_*.md`: **Importante:** Arquivos README individuais explicando o propósito, uso e princípios de cada prompt modelo localizado na pasta `prompts/`. Essenciais para análise e otimização dos prompts.
-*   **/prompts:** Contém os templates de prompt modelo `.md` reutilizáveis para cada agente/tarefa. Estes são os arquivos a serem copiados e preenchidos para interagir com a LLM.
+*   **/Guides:** Contém a documentação principal do Método AGV:
+    *   `AGV_Method_Workflow_v1.0.md`: O fluxo de trabalho detalhado.
+    *   `AGV_Method_Principios_Chave.md`: Os princípios de design e arquitetura.
+    *   `README_Prompt_*.md`: **Importante:** Arquivos README individuais explicando o propósito, uso e princípios de cada prompt modelo localizado na pasta `Prompts/Templates/`. Essenciais para análise e otimização dos prompts.
+*   **/AGV_MethodTimeline:** Contém documentos históricos do desenvolvimento do método:
+    *   `AGV_Method_State_Snapshot_v2.0.md`: Resumo periódico do estado da colaboração e definição do método (para continuidade).
+*   **/Prompts:** Contém os templates e prompts preenchidos:
+    *   **/Templates:** Templates de prompt modelo `.md` reutilizáveis para cada agente/tarefa. Estes são os arquivos a serem copiados e preenchidos para interagir com a LLM.
+    *   **/FilledPrompts_Demo:** Exemplos de prompts preenchidos para referência.
+*   **/Research:** Contém resultados de pesquisas e análises comparativas para escolha de tecnologias.
+*   **Scripts de Automação:**
+    *   `iniciar-trabalho.bat`: Script para preparar o ambiente de trabalho e sincronizar com o repositório remoto.
+    *   `atualizar-github.bat`: Script para enviar alterações para o repositório remoto.
 *   `README.md`: Este arquivo.
 
 ## 6. Como Usar o Método AGV (v1.0)
 
-1.  **Familiarize-se:** Leia os documentos em `docs/` (workflow e princípios) para entender o processo e a filosofia.
-2.  **Siga o Fluxo:** Execute as fases descritas em `docs/metodo_agv_workflow_v1.0.md`.
-3.  **Utilize os Prompts:** Para cada interação com a LLM representando um agente, copie o conteúdo do prompt modelo correspondente de `prompts/`, preencha os placeholders com as informações específicas do seu projeto/tarefa, e submeta à LLM. Consulte o README do prompt específico em `docs/` se tiver dúvidas sobre seu uso.
+1.  **Familiarize-se:** Leia os documentos em `Guides/` (workflow e princípios) para entender o processo e a filosofia.
+2.  **Siga o Fluxo:** Execute as fases descritas em `Guides/AGV_Method_Workflow_v1.0.md`.
+3.  **Utilize os Prompts:** Para cada interação com a LLM representando um agente, copie o conteúdo do prompt modelo correspondente de `Prompts/Templates/`, preencha os placeholders com as informações específicas do seu projeto/tarefa, e submeta à LLM. Consulte o README do prompt específico em `Guides/` se tiver dúvidas sobre seu uso.
 4.  **Valide e Itere:** Revise criticamente os outputs da IA em cada etapa e não hesite em iterar ou ajustar os prompts conforme necessário.
+5.  **Use os Scripts de Automação:** Utilize os scripts batch fornecidos para facilitar o trabalho com o repositório Git:
+   * Execute `iniciar-trabalho.bat` para preparar o ambiente e obter a versão mais recente do código.
+   * Execute `atualizar-github.bat` para enviar suas alterações para o repositório remoto.
 
 ## 7. Status Atual
 
@@ -67,12 +76,3 @@ O desenvolvimento de uma funcionalidade tipicamente segue as fases:
 *   **Status:** Em desenvolvimento ativo e refinamento através de projetos piloto.
 
 ---
-```
-
-**Considerações sobre este README:**
-
-*   **Completo:** Tenta cobrir todos os aspectos essenciais do método e do repositório.
-*   **Estruturado:** Usa cabeçalhos e listas para facilitar a leitura.
-*   **Conectado:** Inclui links relativos para os outros documentos importantes dentro do repositório.
-*   **Explicativo:** Não apenas lista os arquivos, mas explica o propósito deles (especialmente dos READMEs dos prompts).
-*   **Prático:** Fornece um guia rápido de "Como Usar".
