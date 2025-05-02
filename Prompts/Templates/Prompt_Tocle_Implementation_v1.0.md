@@ -14,19 +14,16 @@
     *   `utils.helpers`
 *   **Interfaces de Dependências (Contratos a serem Usados):**
     *   `[FORNECER AQUI AS ASSINATURAS E DESCRIÇÕES DAS FUNÇÕES/MÉTODOS/CLASSES DE *OUTROS MÓDULOS* QUE ESTE CÓDIGO PRECISA CHAMAR. SEJA PRECISO. Ex:]`
-    *   `utils.helpers.calcular_hash(file_path: Path) -> str`: Calcula e retorna o hash xxhash de um arquivo.`
-    *   `core.database.UserRepository.get_user_by_id(user_id: int) -> Optional[User]`: Busca um usuário no DB pelo ID. Retorna um objeto User ou None.`
-    *   `api_client.ExternalService.send_data(data: Dict) -> bool`: Envia dados para um serviço externo. Retorna True em sucesso.`
+    *   `utils.helpers.calcular_hash(file_path: Path) -> str`
 *   **Interfaces Expostas (Contratos a serem Fornecidos - se aplicável):**
     *   `[SE ESTE MÓDULO EXPÕE FUNÇÕES/CLASSES PARA OUTROS USarem, LISTAR SUAS ASSINATURAS ESPERADAS AQUI. Ex:]`
     *   `Classe 'DecisionEngine' com método público 'decide_file_to_keep(group: DuplicateGroup) -> FileMetadata'`
-*   **Padrões de Design Chave (Relevantes para esta Implementação):** `[PADRÕES RELEVANTES DA ARQUITETURA] - 'api_client.ExternalService.send_data(data: Dict) -> bool`: Envia dados para um serviço externo. Retorna True em sucesso.`
+*   **Padrões de Design Chave (Relevantes para esta Implementação):** `[PADRÕES RELEVANTES DA ARQUITETURA]`
 *   **Estrutura de Dados Principal (Relevantes para esta Implementação):** `[DEFINIÇÃO DE DATACLASSES/NAMEDTUPLES RELEVANTES QUE ESTE MÓDULO USARÁ OU RETORNARÁ]`
 
 **Especificação da Funcionalidade/Módulo a ser Implementada (Gerada por Severino):**
 
 [COLE AQUI O OUTPUT COMPLETO DA ESPECIFICAÇÃO TÉCNICA DETALHADA GERADA PELO SEVERINO NA FASE 2.5]
-
 
 **Stack Tecnológica Permitida (Definida na Fase 1):**
 

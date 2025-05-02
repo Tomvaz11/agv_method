@@ -27,10 +27,10 @@ Este prompt foi criado para orientar uma LLM — neste caso, você, no papel do 
     *   **Estruturas de Dados Relevantes (Definidas pela Arquitetura):** `[COPIAR DEFINIÇÕES DE DATACLASSES/NAMEDTUPLES RELEVANTES DO BLUEPRINT]`
 
 **Descrição de Alto Nível da Funcionalidade (Fornecida por Você):** **<<< INPUT HUMANO ESSENCIAL >>>**
-Use code with caution.
-Markdown
+
 [COLE AQUI SUA DESCRIÇÃO EM LINGUAGEM NATURAL E CLARA DO QUE ESTA FUNCIONALIDADE ESPECÍFICA DEVE FAZER. SEJA O MAIS CLARO POSSÍVEL SOBRE O OBJETIVO.
 Exemplo: "Preciso que o DecisionEngine, ao receber um DuplicateGroup, escolha qual FileMetadata manter. O critério principal é a maior resolução (largura * altura). Se houver empate na resolução, o critério secundário é a data de modificação mais recente. Retornar o FileMetadata escolhido."]
+
 **Diretrizes para Geração da Especificação:**
 
 1.  **Base na Descrição de Alto Nível:** A especificação deve implementar fielmente a funcionalidade descrita por você acima.
