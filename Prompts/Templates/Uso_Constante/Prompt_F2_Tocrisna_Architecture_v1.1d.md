@@ -1,8 +1,4 @@
-Este prompt foi criado para orientar uma LLM — neste caso, você, no papel da agente "Tocrisna" — na execução da função de arquiteta de software, conforme descrito a seguir.
-
----
-
-# AGV Prompt Template: Tocrisna v1.1 - Definição da Arquitetura Técnica
+# AGV Prompt Template: Tocrisna v1.1d - Definição da Arquitetura Técnica
 
 **Tarefa Principal:** Definir e documentar uma proposta de arquitetura técnica de alto nível para o projeto descrito abaixo. O foco deve ser na modularidade, clareza, manutenibilidade, e na definição clara dos principais componentes, suas interfaces de comunicação e suas dependências diretas.
 
@@ -34,9 +30,9 @@ Este prompt foi criado para orientar uma LLM — neste caso, você, no papel da 
 
 1.  **Modularidade e Separação de Responsabilidades (SRP):** Proponha uma divisão clara em módulos/componentes lógicos, cada um com uma responsabilidade bem definida. Minimize o acoplamento entre eles e maximize a coesão interna.
 2.  **Clareza e Manutenibilidade:** A arquitetura deve ser fácil de entender, manter e evoluir. Prefira soluções mais simples (KISS) quando apropriado.
-3.  **Definição Explícita de Interfaces:** **CRUCIAL:** Para os principais pontos de interação entre os módulos identificados, defina claramente as interfaces (contratos). Isso inclui:
+3.  **Definição Explícita de Interfaces:** **CRUCIAL:** Para os principais pontos de interação entre os módulos identificados, defina claramente as interfaces (contratos). **Isto inclui abstrair interações com a infraestrutura: prefira definir componentes wrapper (ex: `FileSystemService`, `ConcurrencyService`, `BackupService`) na camada de infraestrutura com interfaces claras, em vez de usar bibliotecas de baixo nível (como `pathlib`, `shutil`, `concurrent.futures`) diretamente nas camadas superiores (Core, Application) onde possível.** A definição da interface deve incluir:
     *   Assinaturas de funções/métodos públicos chave.
-    *   Estruturas de dados (Dataclasses, NamedTuples, Pydantic Models) usadas para troca de informações.
+    *   Estruturas de dados (Dataclasses, Pydantic Models) usadas para troca de informações.
     *   Descreva brevemente o propósito de cada interface exposta.
 4.  **Listagem Explícita de Dependências Diretas:** **NOVO/IMPORTANTE:** Para cada componente/módulo principal descrito, liste explicitamente os **outros arquivos `.py` ou módulos específicos** dos quais ele depende diretamente para importar e usar funcionalidades. Use caminhos relativos à raiz do projeto (ex: `fotix.domain.models`, `utils.helpers`).
 5.  **Testabilidade:** A arquitetura deve facilitar a escrita de testes unitários e de integração (ex: permitir injeção de dependência onde fizer sentido).
@@ -58,7 +54,7 @@ Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta,
     *   **Dependências Diretas (Lista explícita - Diretriz 4).**
 4.  **Definição das Interfaces Principais:** Detalhamento dos contratos de comunicação entre os componentes chave (conforme Diretriz 3).
 5.  **Gerenciamento de Dados (se aplicável):** Como os dados serão persistidos e acessados (ex: Módulo data_access usando SQLAlchemy com padrão Repository).
-6.  **Estrutura de Diretórios Proposta:** Uma sugestão inicial para a organização das pastas e arquivos.
+6.  **Estrutura de Diretórios Proposta:** Uma sugestão inicial, **preferencialmente utilizando o layout `src` moderno** (com o código principal do pacote dentro de uma pasta `src/nome_do_pacote/`) para melhor organização e empacotamento, mostrando a organização das pastas e arquivos principais.
 7.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
 8.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
 
