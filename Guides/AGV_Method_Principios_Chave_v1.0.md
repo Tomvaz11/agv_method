@@ -14,16 +14,16 @@ Este documento descreve os princípios fundamentais de design, arquitetura e pro
 
 **Como Funciona no Fluxo AGV:**
 
-1.  **Definição pela Tocrisna (Arquiteta):** Durante a fase de arquitetura (usando `Prompts/Templates/Prompt_Tocrisna_Architecture_v1.1b.md`), além de definir os módulos e suas responsabilidades, a Tocrisna **deve** especificar as **interfaces públicas chave** para a comunicação entre eles e suas **dependências diretas**. Isso inclui:
+1.  **Definição pela Tocrisna (Arquiteta):** Durante a fase de arquitetura (usando `Prompts/Templates/Prompt_F2_Tocrisna_Architecture_v1.1b.md`), além de definir os módulos e suas responsabilidades, a Tocrisna **deve** especificar as **interfaces públicas chave** para a comunicação entre eles e suas **dependências diretas**. Isso inclui:
     *   Assinaturas de funções/métodos (nomes, parâmetros com tipos, tipo de retorno).
     *   Estruturas de dados (Dataclasses, NamedTuples, etc.) usadas para troca de informações.
     *   Uma breve descrição do propósito de cada elemento da interface.
     *   Uma lista explícita dos outros módulos internos dos quais este depende.
     *   O output da Tocrisna (Blueprint Arquitetural) torna-se a fonte da verdade para esses contratos e dependências.
 
-2.  **Uso pelo Severino (Especificador):** Ao detalhar a funcionalidade de um módulo (usando `Prompts/Templates/Prompt_Severino_EspeciFi_v1.2.md`), o Severino **deve** receber o contexto arquitetural relevante (incluindo interfaces e dependências) do Blueprint e referenciar explicitamente as interfaces definidas pela Tocrisna quando descrever os passos de processamento que envolvem chamadas a outros módulos.
+2.  **Uso pelo Severino (Especificador):** Ao detalhar a funcionalidade de um módulo (usando `Prompts/Templates/Prompt_F2.5_Severino_EspeciFi_v1.2.md`), o Severino **deve** receber o contexto arquitetural relevante (incluindo interfaces e dependências) do Blueprint e referenciar explicitamente as interfaces definidas pela Tocrisna quando descrever os passos de processamento que envolvem chamadas a outros módulos.
 
-3.  **Implementação pelo Tocle (Engenheiro):** Ao implementar um módulo (usando `Prompts/Templates/Prompt_Tocle_Implementation_v1.2b.md`):
+3.  **Implementação pelo Tocle (Engenheiro):** Ao implementar um módulo (usando `Prompts/Templates/Prompt_F3_Tocle_Implementation_v1.2b.md`):
     *   O **Contexto Arquitetural** fornecido no prompt incluirá as interfaces e dependências relevantes.
     *   Tocle é instruído a **aderir estritamente** a essas interfaces e a **usar o contexto** dos arquivos listados em "Dependências Diretas".
     *   Chamar outros módulos *apenas* através das interfaces de dependência fornecidas ou importando diretamente das dependências listadas.

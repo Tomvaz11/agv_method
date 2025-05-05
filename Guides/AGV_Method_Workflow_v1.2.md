@@ -41,9 +41,9 @@ graph LR
 ## Papéis dos Agentes (v1.2)
 
 - **Você:** Idealizador, Definidor (Funcionalidades Alto Nível, Stack, **Framework de Testes**), Coordenador, Validador Crítico.
-- **RequirementHelper (Auxiliar):** Ajuda a elaborar a "Descrição de Alto Nível" da funcionalidade via entrevista. Usa `Prompts/Templates/Prompt_RequirementHelper_ElaborateFunctionality_v1.0.md`.
-- **Tocrisna (Arquiteta):** Define arquitetura (componentes, interfaces, dependências). Usa `Prompts/Templates/Prompt_Tocrisna_Architecture_v1.1b.md`.
-- **Orche (Engenheiro):** Implementa código e testes unitários (módulo principal + opcionalmente `utils`). Atualiza/refatora testes. Usa `Prompts/Templates/Prompt_Tocle_Implementation_v1.2b.md` e `Prompts/Templates/Prompt_Tocle_RefatorTest_v1.0.md`.
+- **RequirementHelper (Auxiliar):** Ajuda a elaborar a "Descrição de Alto Nível" da funcionalidade via entrevista. Usa `Prompts/Templates/Prompt_F2.2_RequirementHelper_ElaborateFunctionality_v1.0.md`.
+- **Tocrisna (Arquiteta):** Define arquitetura (componentes, interfaces, dependências). Usa `Prompts/Templates/Prompt_F2_Tocrisna_Architecture_v1.1b.md`.
+- **Orche (Engenheiro):** Implementa código e testes unitários (módulo principal + opcionalmente `utils`). Atualiza/refatora testes. Usa `Prompts/Templates/Prompt_F3_Tocle_Implementation_v1.2b.md` e `Prompts/Templates/Prompt_Tocle_RefatorTest_v1.0.md`.
 - **Tolete (Refatorador):** Melhora código de produção existente. Usa `Prompts/Templates/Prompt_Tolete_Refatoracao_v1.0.md`.
 - **(Meta-Agentes/Opcionais):** `PreenchedorGenerico` (v1.1), `ValidadorCruzado` (v1.0).
 
@@ -67,7 +67,7 @@ graph LR
 - **Objetivo:** Criar o blueprint técnico.
 - **Inputs:** Output da Fase 1.
 - **Atividades:**
-    1.  Preparar (manualmente ou com Preenchedor + Validador) `Prompts/Templates/Prompt_Tocrisna_Architecture_v1.1b.md`.
+    1.  Preparar (manualmente ou com Preenchedor + Validador) `Prompts/Templates/Prompt_F2_Tocrisna_Architecture_v1.1b.md`.
     2.  Executar prompt.
     3.  Analisar criticamente o Blueprint gerado.
 - **Output:** `Blueprint_Arquitetural.md` (contendo componentes, interfaces, dependências diretas, etc.).
@@ -78,7 +78,7 @@ graph LR
 - **Objetivo:** Obter uma sequência lógica para implementação.
 - **Inputs:** `Blueprint_Arquitetural.md` validado.
 - **Atividades:**
-    1.  Preparar e executar `Prompts/Templates/Prompt_OrchestratorHelper_SuggestOrder_v1.0.md`.
+    1.  Preparar e executar `Prompts/Templates/Prompt_F2.1_OrchestratorHelper_SuggestOrder_v1.0.md`.
 - **Output:** `Ordem_Implementacao_Sugerida.md`.
 - **Validação (Você):** Revisar a ordem sugerida, ajustar se necessário.
 
@@ -91,7 +91,7 @@ graph LR
 - **Objetivo:** Gerar a "Descrição de Alto Nível" para o módulo atual.
 - **Inputs:** Nome/Responsabilidade do Módulo Atual (do Blueprint/Ordem).
 - **Atividades:**
-    1.  Executar `Prompts/Templates/Prompt_RequirementHelper_ElaborateFunctionality_v1.0.md` em modo interativo com a LLM.
+    1.  Executar `Prompts/Templates/Prompt_F2.2_RequirementHelper_ElaborateFunctionality_v1.0.md` em modo interativo com a LLM.
     2.  Responder às perguntas da IA para detalhar a funcionalidade.
     3.  Validar o texto final gerado pela IA.
 - **Output:** Bloco de texto "Descrição de Alto Nível" para o módulo atual.
@@ -105,7 +105,7 @@ graph LR
     - Blueprint Arquitetural Aprovado (Output da Fase 2).
     - Nome do Módulo Alvo.
 - **Atividades:**
-    1.  Preparar (manualmente ou com Preenchedor + Validador) `Prompts/Templates/Prompt_Severino_EspeciFi_v1.2.md` usando os inputs.
+    1.  Preparar (manualmente ou com Preenchedor + Validador) `Prompts/Templates/Prompt_F2.5_Severino_EspeciFi_v1.2.md` usando os inputs.
     2.  Executar o prompt.
     3.  Analisar a Especificação Técnica e as Sugestões para `utils`.
     4.  **Decidir quais sugestões para `utils` aprovar (se houver).**
@@ -118,7 +118,7 @@ graph LR
 
 - **Objetivo:** Escrever código funcional e testes unitários.
 - **Inputs:**
-    - `Prompts/Templates/Prompt_Tocle_Implementation_v1.2b.md` preenchido com:
+    - `Prompts/Templates/Prompt_F3_Tocle_Implementation_v1.2b.md` preenchido com:
         - Contexto Arquitetural relevante (do Blueprint).
         - Especificação Técnica (Output principal da Fase 2.5).
         - **Instrução Adicional para `utils`** (com as funções aprovadas, se houver).
