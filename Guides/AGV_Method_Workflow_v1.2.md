@@ -1,6 +1,6 @@
 # Método AGV: Fluxo de Trabalho v1.2
 
-Este documento descreve o fluxo de trabalho passo a passo para desenvolver software usando o Método AGV (Assistência Generativa à Velocidade), versão 1.2.
+Este documento descreve o fluxo de trabalho passo a passo para desenvolver software usando o Método AGV (Assistência Generativa à Velocidade), versão 1.2
 
 ## Visão Geral do Fluxo (v1.2)
 
