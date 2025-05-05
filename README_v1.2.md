@@ -47,18 +47,18 @@ O desenvolvimento de uma funcionalidade tipicamente segue as fases:
     *   d. **Revisão & Testes (Você + Tocle/Tolete):** Revisão, testes unitários, refatoração, ajuste testes, testes de integração. *[Validação Humana + Iteração]*
 5.  **Integração & Próximo Ciclo:** Commit, seguir para próximo módulo.
 
-➡️ **Para o fluxo detalhado passo a passo, consulte:** [`Guides/AGV_Method_Workflow_v1.2.md`](./Guides/AGV_Method_Workflow_v1.2.md) *(Nome do arquivo atualizado para refletir a versão)*
+➡️ **Para o fluxo detalhado passo a passo, consulte:** [`Guides/AGV_Method_Workflow_v1.2.md`](./Guides/AGV_Method_Workflow_v1.2.md)
 
 ## 5. Estrutura do Repositório
 
 *   **/Guides:** Contém a documentação principal do Método AGV:
     *   `AGV_Method_Workflow_v1.2.md`: O fluxo de trabalho detalhado atualizado.
     *   `AGV_Method_Principios_Chave_v1.0.md`: Os princípios de design e arquitetura.
-    *   `README_Prompt_*.md`: **Importante:** READMEs individuais explicando cada prompt modelo localizado em `Prompts/Templates/`.
+    *   *(Removida referência aos READMEs individuais dos prompts)*
 *   **/AGV_MethodTimeline:** Contém documentos históricos do desenvolvimento do método:
     *   `AGV_Method_State_Snapshot_v*.md`: Resumos periódicos do estado da colaboração.
 *   **/Prompts:** Contém os templates e prompts preenchidos:
-    *   **/Templates:** Templates de prompt modelo `.md` reutilizáveis para cada agente/tarefa (incluindo os novos Helpers).
+    *   **/Templates:** Templates de prompt modelo `.md` reutilizáveis para cada agente/tarefa. Estes são os arquivos a serem copiados e preenchidos para interagir com a LLM.
     *   **/FilledPrompts_Demo:** Exemplos de prompts preenchidos para referência.
 *   **/Research:** Contém resultados de pesquisas e análises comparativas.
 *   **Scripts de Automação:**
@@ -70,7 +70,7 @@ O desenvolvimento de uma funcionalidade tipicamente segue as fases:
 
 1.  **Familiarize-se:** Leia os documentos em `Guides/` (workflow v1.2 e princípios v1.0).
 2.  **Siga o Fluxo:** Execute as fases descritas em `Guides/AGV_Method_Workflow_v1.2.md`. Note a adição dos passos com `RequirementHelper` e `OrchestratorHelper`.
-3.  **Utilize os Prompts:** Copie os templates de `Prompts/Templates/`, preencha (manualmente ou com IA + validação) e submeta à LLM. Consulte os `README_Prompt_*.md` em `Guides/` para detalhes.
+3.  **Utilize os Prompts:** Copie os templates de `Prompts/Templates/`, preencha (manualmente ou com IA + validação) e submeta à LLM. Os próprios templates contêm instruções e placeholders.
 4.  **Valide e Itere:** Revise criticamente os outputs da IA.
 5.  **Use os Scripts de Automação:** Conforme descrito.
 
