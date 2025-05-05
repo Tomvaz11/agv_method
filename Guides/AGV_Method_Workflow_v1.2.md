@@ -166,3 +166,6 @@ graph LR
 - **Foco na Qualidade:** Aplicação consistente de boas práticas (PEP 8, SRP, DRY, KISS, Type Hints, Docstrings, Testes).
 - **Gerenciamento de Contexto da IA:** Uso de prompts focados e contexto mínimo necessário.
 - **Iteração:** Reconhecimento de que o desenvolvimento é iterativo e ajustes nos prompts ou no código podem ser necessários.
+- **Teste de Integração (Você/Ambiente):** **CRUCIAL (Incremental):** Executar testes que verifiquem:
+    - A interação com outros módulos já existentes.
+- **Commit (Você):** Versionar código funcional e testes no Git.
