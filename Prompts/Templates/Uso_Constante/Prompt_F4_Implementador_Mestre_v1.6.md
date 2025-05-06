@@ -37,11 +37,32 @@
         *   **Lembre-se de aplicar a Diretriz de Testes (Diretriz 8) a todos os módulos base criados ou modificados.**
         *   Não peça confirmação ao Coordenador para ações padrão.
 
-    **4.1. Diretrizes Específicas para Módulos Base (Models, Utils, Config, Interfaces):**
-        *   **`Models` (ex: `[nome_pacote_inferido]/core/models.py`):** Pydantic `BaseModel`/`dataclasses`, Type Hints, foco em dados, Docstrings.
-        *   **`Utils` (ex: `[nome_pacote_inferido]/utils/helpers.py`):** Pequenas, puras, SRP, sem dependências internas de `[nome_pacote_inferido]`, Type Hints, Docstrings. Testes em `tests/unit/utils/` (ou `tests/unit/[nome_pacote_inferido]/utils/`).
-        *   **`Config` (ex: `[nome_pacote_inferido]/config.py`):** Simples, acesso tipado. Testes em `tests/unit/config/` (ou `tests/unit/[nome_pacote_inferido]/config/`).
-        *   **`Interfaces` (ex: `[nome_pacote_inferido]/infrastructure/interfaces.py`):** `typing.Protocol`/`abc.ABC`, assinaturas claras, Type Hints, Docstrings, mínimas e focadas.
+        **4.1. Diretrizes Específicas para Módulos Base (Models, Utils, Config, Interfaces):**
+
+        *   **`Models` (ex: `[nome_pacote_inferido]/core/models.py` ou `[nome_pacote_inferido]/domain/models.py`):**
+            *   Use **Pydantic `BaseModel`** (preferencial) ou `dataclasses` para definir estruturas de dados claras e com validação.
+            *   Aplique **Type Hints** rigorosos (PEP 484) a todos os campos.
+            *   Mantenha os modelos focados em **dados**, evitando lógica de negócio complexa dentro deles (a lógica deve residir nos serviços ou no core).
+            *   Adicione **Docstrings** (PEP 257) claras para cada modelo e campo importante.
+
+        *   **`Utils` (ex: `[nome_pacote_inferido]/utils/helpers.py`):**
+            *   Crie funções **pequenas, puras (sem efeitos colaterais sempre que possível) e com responsabilidade única (SRP)**.
+            *   Garanta que as funções em `utils` **NÃO tenham dependências** de outros módulos internos específicos da aplicação `[nome_pacote_inferido]` (como `[nome_pacote_inferido]/core`, `[nome_pacote_inferido]/application`). Elas devem ser genéricas.
+            *   Use **Type Hints** e **Docstrings** claras.
+            *   Inclua testes unitários simples para a lógica das funções em `tests/unit/utils/` (ou `tests/unit/[nome_pacote_inferido]/utils/` se o Blueprint definir testes aninhados com o nome do pacote). (Lembre-se da Diretriz 8 sobre testes para todo código).
+
+        *   **`Config` (ex: `[nome_pacote_inferido]/config.py`):**
+            *   Implemente uma forma simples de carregar/fornecer acesso a configurações (ex: variáveis de ambiente, arquivo JSON/INI, ou Pydantic `BaseSettings`).
+            *   Forneça acesso fácil e tipado às configurações.
+            *   Evite lógica complexa neste módulo; seu propósito é fornecer dados de configuração.
+            *   Inclua testes unitários para a lógica de carregamento/acesso em `tests/unit/config/` (ou `tests/unit/[nome_pacote_inferido]/config/` se o Blueprint definir testes aninhados com o nome do pacote). (Lembre-se da Diretriz 8).
+
+        *   **`Interfaces` (ex: `[nome_pacote_inferido]/infrastructure/interfaces.py`, `[nome_pacote_inferido]/core/interfaces.py`):**
+            *   Use `typing.Protocol` (preferencial) ou `abc.ABC` para definir interfaces formais.
+            *   Defina **assinaturas de métodos claras** com **Type Hints** completos para parâmetros e tipos de retorno.
+            *   Use **Docstrings** para explicar o propósito da interface e de cada método, incluindo seus parâmetros, o que retorna e quaisquer exceções importantes que podem ser levantadas.
+            *   Mantenha as interfaces **mínimas e focadas** no contrato necessário (Princípio da Segregação de Interfaces).
+            *   Interfaces em si geralmente não têm testes unitários diretos, mas suas implementações concretas sim (conforme Diretriz 8).
 
 5.  **Implementar Módulo Alvo Principal:**
     *   Escreva o código Python de produção nos arquivos corretos, conforme seu plano e o Blueprint Arquitetural, utilizando o nome do pacote raiz inferido para formar os caminhos completos dos módulos (ex: `src/[nome_pacote_inferido]/infrastructure/file_system.py`).
