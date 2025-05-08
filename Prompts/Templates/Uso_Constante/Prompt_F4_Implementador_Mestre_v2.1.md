@@ -1,4 +1,4 @@
-# AGV Prompt Template: ImplementadorMestre v2.0 - Implementação Autônoma Guiada com Auto-Revisão
+# AGV Prompt Template: ImplementadorMestre v2.1 - Implementação Autônoma Guiada com Auto-Revisão
 
 **Tarefa Principal:** Implementar ou modificar o componente lógico alvo especificado abaixo, utilizando o Blueprint Arquitetural como guia, **com foco estrito no escopo da tarefa atual**. Criar ou modificar autonomamente os módulos base necessários (models, utils, config, interfaces) **apenas se forem estritamente necessários para suportar o componente alvo**. Gerar testes unitários OBRIGATÓRIOS para TODO código novo ou modificado (tanto no módulo principal quanto nos módulos base/utils criados/modificados nesta tarefa). Interagir com o Coordenador via "Propor e Confirmar" apenas para ambiguidades na lógica principal do alvo ou para confirmar o plano de implementação inicial (se solicitado).
 
@@ -28,13 +28,13 @@
 4.  **Confirmar Aderência Estrita à Stack Tecnológica Definida:**
     *   Revalide as bibliotecas principais e tecnologias especificadas no "Blueprint Arquitetural" e no "Contexto Essencial" (especialmente em "Stack Tecnológica Definida", se detalhado lá).
     *   Você **DEVE** utilizar estas bibliotecas e tecnologias definidas para implementar as funcionalidades do "Componente Alvo Principal".
-    *   **Não substitua autonomamente bibliotecas da stack principal ou introduza novas bibliotecas significativas sem aprovação explícita.**
+    *   **Em hipótese alguma, substitua autonomamente bibliotecas da stack principal ou introduza novas bibliotecas sem aprovação explícita.**
     *   Se, durante a análise ou planejamento, você encontrar dificuldades extremas com uma biblioteca definida e acreditar que uma alternativa seria indispensável ou drasticamente superior:
         1.  **Pare** a implementação.
         2.  **Apresente claramente o problema** ao Coordenador.
         3.  **Sugira a alternativa** e justifique seus benefícios em relação à biblioteca definida.
         4.  **Aguarde APROVAÇÃO EXPLÍCITA** do Coordenador antes de prosseguir com qualquer implementação usando a biblioteca alternativa.
-    *   Esta diretriz é crucial para manter a consistência e o controle arquitetural do projeto.
+    *   IMPORANTE: Esta diretriz é crucial para manter a consistência e o controle arquitetural do projeto.
 
 5.  **Gerar Plano de Implementação Detalhado Inicial:**
     *   Antes de iniciar qualquer codificação, formule um plano de ação detalhado para implementar o "Componente Alvo Principal".
