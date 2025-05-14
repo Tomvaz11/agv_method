@@ -71,8 +71,3 @@ Este documento descreve os princípios fundamentais de design, arquitetura e pro
 **Conceito:** O Método AGV, seus prompts e seus processos são considerados "vivos". Eles são refinados continuamente com base na experiência prática e nos resultados obtidos em projetos piloto.
 
 **Filosofia:** A colaboração humano-IA é um campo em evolução. A capacidade de aprender com cada interação, identificar o que funciona (e o que não funciona) e ajustar a metodologia é crucial para o sucesso a longo prazo. Os "Snapshots Detalhados e Contextualizados" servem como um registro dessa evolução.
-```
-
----
-
-Por favor, revise estes dois documentos com atenção. Eles tentam capturar a essência do nosso método AGV evoluído. Estou pronto para discutir quaisquer ajustes, acréscimos ou refinamentos que você julgar necessários!
