@@ -1,4 +1,4 @@
-# AGV Prompt Template: Geração de Cenários de Teste de Aceitação do Usuário (UAT) / E2E Manuais (v1.1 - Mínima Intervenção)
+# AGV Prompt Template: Geração de Cenários de Teste de Aceitação do Usuário (UAT) / E2E Manuais (v1.2)
 
 **Tarefa Principal:** Com base nos artefatos do projeto especificados abaixo (Blueprint Arquitetural e Ordem de Implementação), gerar uma lista detalhada de cenários de teste manuais. Estes cenários devem permitir ao Coordenador (usuário humano) validar as funcionalidades principais da aplicação da perspectiva de um usuário final, cobrindo os fluxos de trabalho essenciais de ponta a ponta (End-to-End).
 
