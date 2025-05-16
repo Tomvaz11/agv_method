@@ -36,6 +36,9 @@
 4.  **Cobertura de Cenários:**
     *   Gere um número razoável de cenários de teste principais (sugestão: 5 a 10, dependendo da complexidade do projeto inferido) que cubram os fluxos mais importantes e representativos.
     *   Se possível, inclua cenários que testem o tratamento de erros comuns ou condições de borda que um usuário poderia encontrar.
+    *   4.1.  **Quantidade e Diversidade Específica de Cenários:**
+        *   Por favor, gere entre 10 e 12 cenários de teste de aceitação.
+        *   Certifique-se de incluir cenários que cubram o tratamento de erros, operações com grandes volumes, cancelamento de operações e diferentes estratégias de seleção, além dos fluxos principais.
 
 5.  **Formato do Output:**
     *   Apresente os cenários de teste em **Markdown**, usando a estrutura detalhada no item 3.
