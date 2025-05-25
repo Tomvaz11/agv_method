@@ -1,4 +1,4 @@
-# AGV Prompt Template: Tocrisna v1.1d - Definição da Arquitetura Técnica
+# AGV Prompt Template: Tocrisna v1.6 - Definição da Arquitetura Técnica
 
 **Tarefa Principal:** Definir e documentar uma proposta de arquitetura técnica de alto nível para o projeto descrito abaixo. O foco deve ser na modularidade, clareza, manutenibilidade, e na definição clara dos principais componentes, suas interfaces de comunicação e suas dependências diretas.
 
@@ -47,11 +47,18 @@ Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta,
 
 1.  **Visão Geral da Arquitetura:** Um breve resumo da abordagem arquitetural escolhida (ex: Arquitetura em Camadas, Microsserviços simples, Baseada em Eventos, etc.)  e uma justificativa.
 2.  **Diagrama de Componentes (Simplificado):** Um diagrama de blocos mostrando os principais módulos/componentes e suas interconexões.
-3.  **Descrição dos Componentes/Módulos:** Para cada componente principal:
-    *   Nome claro (ex: `fotix.core.duplicate_finder`).
-    *   Responsabilidade principal.
-    *   Tecnologias chave da stack que serão usadas nele.
-    *   **Dependências Diretas (Lista explícita - Diretriz 4).**
+3.  **Descrição dos Componentes/Módulos:** 
+    *   Para cada componente principal:
+        *   Nome claro (ex: `fotix.core.duplicate_finder`).
+        *   Responsabilidade principal.
+        *   Tecnologias chave da stack que serão usadas nele.
+        *   **Dependências Diretas (Lista explícita - Diretriz 4).**
+    *   Para a Camada de Apresentação (UI) (ex: `fotix.ui`):**
+        *   Além da descrição geral da UI, **proponha uma decomposição em principais Telas/Views ou Componentes de UI reutilizáveis significativos.**
+        *   Para cada Tela/View/Componente de UI proposto:
+            *   Descreva brevemente seu propósito principal.
+            *   Liste os principais serviços da Camada de Aplicação com os quais ele provavelmente interagirá.
+            *   Sugira se sua implementação pode ser considerada uma unidade de trabalho relativamente independente.
 4.  **Definição das Interfaces Principais:** Detalhamento dos contratos de comunicação entre os componentes chave (conforme Diretriz 3).
 5.  **Gerenciamento de Dados (se aplicável):** Como os dados serão persistidos e acessados (ex: Módulo data_access usando SQLAlchemy com padrão Repository).
 6.  **Estrutura de Diretórios Proposta:** Uma sugestão inicial, **preferencialmente utilizando o layout `src` moderno** (com o código principal do pacote dentro de uma pasta `src/nome_do_pacote/`) para melhor organização e empacotamento, mostrando a organização das pastas e arquivos principais.

@@ -1,4 +1,4 @@
-# AGV Prompt Template: OrchestratorHelper v1.5 - Ordem de Implementação com Pontos de Teste de Integração
+# AGV Prompt Template: OrchestratorHelper v1.6 - Ordem de Implementação com Pontos de Teste de Integração
 
 **Tarefa Principal:** Analisar o Blueprint Arquitetural fornecido, sugerir uma ordem de implementação lógica para os componentes/módulos **principais**, gerar uma Descrição de Alto Nível Inicial para cada um, e identificar pontos de verificação estratégicos onde testes de integração devem ser realizados, sugerindo os principais cenários a serem cobertos. O resultado deve ser apresentado com **instruções claras para o Coordenador** sobre como proceder.
 
@@ -26,6 +26,7 @@
 4.  **Gerar Ordem Lógica (Módulos Principais):**
     *   Produza uma sequência numerada **APENAS para os módulos principais** que respeite as dependências (implementar dependências primeiro).
     *   Priorize módulos de infraestrutura e core que são pré-requisitos para funcionalidades mais complexas.
+    *   Se o Blueprint Arquitetural propuser uma decomposição da Camada de UI em Telas/Views ou Componentes de UI significativos, cada um desses componentes de UI deve ser tratado como um 'Módulo Principal' individual na ordem de implementação. Priorize a implementação de componentes de UI que dependam de funcionalidades de backend já implementadas ou que sejam fundamentais para o fluxo inicial do usuário.
 
 5.  **Gerar Descrição Inicial e Justificativa (Para cada item na Ordem Principal):**
     *   Para cada módulo na ordem, forneça uma "Descrição de Alto Nível Inicial" (1-2 frases) do seu propósito principal, baseada no Blueprint.
