@@ -1,13 +1,13 @@
 # Análise Comparativa de Conteúdos Gerais de Texto
 
-Segue abaixo dois textos que são, à primeira vista, praticamente idênticos. No entanto, um deles contém pequenas adições que não estavam presentes no texto original.
+Segue abaixo dois textos que são, à primeira vista, praticamente idênticos. No entanto, podem possuir pequenas diferenças.
 
 ## Objetivo da Tarefa
 
 Solicito que seja feita uma **análise profunda, linha por linha**, com os seguintes objetivos:
 
 1. Identificar todas as diferenças entre os dois textos.
-2. Verificar se, **além das adições**, todo o restante do conteúdo se manteve **exatamente igual** ao original.
+2. Verificar se, **além das diferenças**, todo o restante do conteúdo se manteve **exatamente igual** ao original.
 3. Apontar qualquer alteração, omissão ou reordenação que tenha ocorrido, mesmo que mínima.
 
 ## Instruções de Análise
