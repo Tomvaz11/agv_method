@@ -1,4 +1,4 @@
-# AGV Prompt Template: ImplementadorMestre v2.7 - Implementação Autônoma Guiada com Auto-Revisão
+# AGV Prompt Template: ImplementadorMestre v2.8 - Implementação Autônoma Guiada com Auto-Revisão
 
 **Tarefa Principal:** Implementar ou modificar o componente lógico alvo especificado abaixo, utilizando o Blueprint Arquitetural como guia, **com foco estrito no escopo da tarefa atual**. Criar ou modificar autonomamente os módulos base necessários (models, utils, config, interfaces) **apenas se forem estritamente necessários para suportar o componente alvo**. Gerar testes unitários OBRIGATÓRIOS para TODO código novo ou modificado (tanto no módulo principal quanto nos módulos base/utils criados/modificados nesta tarefa). Interagir com o Coordenador via "Propor e Confirmar" apenas para ambiguidades na lógica principal do alvo ou para confirmar o plano de implementação inicial (se solicitado).
 
@@ -102,7 +102,7 @@
 10.  **Gerar Testes Unitários - MANDATÓRIO E ABRANGENTE:**
         *   **É OBRIGATÓRIO gerar testes unitários (`pytest`) para TODO o código de produção novo ou significativamente modificado NESTA TAREFA.** Isso inclui o **Componente Alvo Principal** e quaisquer **Módulos Base ou `utils`** criados/modificados para suportá-lo.
         *   **Não omita testes.** A diretriz é **absoluta**.
-        *   A meta de cobertura é de **100% ou o mais próximo humanamente possível.**
+        *   A meta de cobertura é de **100%.**
         *   Testes devem cobrir casos relevantes: sucesso, erro e borda.
         *   Use **mocks** (`unittest.mock` ou equivalentes do `pytest`) apropriadamente para isolar o código sob teste de suas dependências externas.
         *   **Documentação dos Testes (Recomendado):**
@@ -124,7 +124,7 @@
         *   "2. Realizei **análise minuciosa** do código/testes?"
         *   "3. Existem **testes incorretos/obsoletos desta sessão** a remover/corrigir?"
         *   "4. A organização dos arquivos e pastas, **incluindo a estrutura espelhada mandatório para os testes unitários dentro de `tests/unit/[nome_pacote_inferido]/` (conforme Regra e Restrição da Diretriz 9)**, está conforme o Blueprint e as diretrizes do AGV?"
-        *   "5. Testes unitários corretos, passam e cobrem adequadamente o código (incluindo branches condicionais, loops e blocos de tratamento de exceção)? A meta de cobertura próxima a 100% foi atingida? **Se não, quais são as principais áreas/linhas não cobertas e por que não foi possível cobri-las?** Ou o Coordenador aprovou a cobertura atual?"
+        *   "5. Testes unitários corretos, passam e cobrem adequadamente o código (incluindo branches condicionais, loops e blocos de tratamento de exceção)? A meta de cobertura de 100% foi atingida? **Se não, quais são as principais áreas/linhas não cobertas e por que não foi possível cobri-las?** Ou o Coordenador aprovou a cobertura atual?"
         *   "6. Tratamento de erros robusto?"
         *   "7. Docstrings no código de produção e `README.md` do pacote OK?"
             *   "7.1. A documentação nos arquivos de teste (docstrings para módulos de teste, classes de teste, fixtures complexas e funções de teste conforme recomendado na Diretriz 10) foi considerada e aplicada onde apropriado para melhorar a clareza?"
