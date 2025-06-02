@@ -1,4 +1,4 @@
-# AGV Prompt Template: ImplementadorMestre v2.8 - Implementação Autônoma Guiada com Auto-Revisão
+# AGV Prompt Template: ImplementadorMestre v2.9 - Implementação Autônoma Guiada com Auto-Revisão
 
 **Tarefa Principal:** Implementar ou modificar o componente lógico alvo especificado abaixo, utilizando o Blueprint Arquitetural como guia, **com foco estrito no escopo da tarefa atual**. Criar ou modificar autonomamente os módulos base necessários (models, utils, config, interfaces) **apenas se forem estritamente necessários para suportar o componente alvo**. Gerar testes unitários OBRIGATÓRIOS para TODO código novo ou modificado (tanto no módulo principal quanto nos módulos base/utils criados/modificados nesta tarefa). Interagir com o Coordenador via "Propor e Confirmar" apenas para ambiguidades na lógica principal do alvo ou para confirmar o plano de implementação inicial (se solicitado).
 
@@ -8,9 +8,9 @@
 2.  **Blueprint Arquitetural:** `@Blueprint_Arquitetural.md` *(Instrução para Coordenador: Anexar o blueprint validado para o projeto atual. A IA inferirá o nome raiz do pacote (ex: 'meu_projeto') a partir dos caminhos e da estrutura definidos neste blueprint.)*
 3.  **Ordem e Descrições Iniciais:** `@Ordem_Com_Descricoes.md` *(Instrução para Coordenador: Anexar o output validado do OrchestratorHelper v1.4 ou superior, adaptado para o projeto atual)*
 4.  **Contexto Adicional do Workspace:** *(Instrução para Coordenador: Anexar arquivos .py relevantes já implementados de dependências diretas E os arquivos dos módulos base - como `[nome_do_pacote_inferido]/models.py`, `[nome_do_pacote_inferido]/utils/helpers.py`, etc. - se já existirem e forem relevantes para o alvo)*
-5.  **[OPCIONAL] Confirmação do Plano Inicial Requerida pelo Coordenador? (Sim/Não):** `[Preencher pelo Coordenador - Default: Não]`
+5.  **Confirmação do Plano Inicial Requerida pelo Coordenador? (Sim/Não):** `[Preencher pelo Coordenador - Default: Não]`
 
-**Instruções Detalhadas para a IA (ImplementadorMestre):**
+**Instruções Detalhadas para a IA:**
 
 1.  **Identificar Alvo e Derivar Nome do Pacote Raiz:**
     *   Extraia o "Funcionalidade/Componente Alvo Principal" da seção de contexto.
@@ -118,36 +118,36 @@
         *   Crie todos os diretórios intermediários necessários (ex: `tests/unit/[nome_pacote_inferido]/`, `tests/unit/[nome_pacote_inferido]/[camada]/`) e os arquivos `__init__.py` dentro deles para garantir que os testes sejam corretamente descobertos e organizados como pacotes.
         *   Se identificar lacunas na cobertura, **DEVE** tentar adicionar os testes faltantes. Se o Coordenador aprovar a cobertura atual, prossiga.
 
-11.  **Executar Checklist de Auto-Revisão Final (Antes de Gerar o Relatório):**
-    *   "Antes de concluir, revise criticamente seu trabalho, respondendo internamente às seguintes questões:"
-        *   "1. Executei **todas** as instruções deste prompt?"
-        *   "2. Realizei **análise minuciosa** do código/testes?"
-        *   "3. Existem **testes incorretos/obsoletos desta sessão** a remover/corrigir?"
-        *   "4. A organização dos arquivos e pastas, **incluindo a estrutura espelhada mandatório para os testes unitários dentro de `tests/unit/[nome_pacote_inferido]/` (conforme Regra e Restrição da Diretriz 9)**, está conforme o Blueprint e as diretrizes do AGV?"
-        *   "5. Testes unitários corretos, passam e cobrem adequadamente o código (incluindo branches condicionais, loops e blocos de tratamento de exceção)? A meta de cobertura de 100% foi atingida? **Se não, quais são as principais áreas/linhas não cobertas e por que não foi possível cobri-las?** Ou o Coordenador aprovou a cobertura atual?"
-        *   "6. Tratamento de erros robusto?"
-        *   "7. Docstrings no código de produção e `README.md` do pacote OK?"
-            *   "7.1. A documentação nos arquivos de teste (docstrings para módulos de teste, classes de teste, fixtures complexas e funções de teste conforme recomendado na Diretriz 10) foi considerada e aplicada onde apropriado para melhorar a clareza?"
-*   "Se encontrar problemas, **corrija-os**. Se persistirem, informe o Coordenador."
+11. **Checklist Auto-Revisão Final (Antes do Relatório):**
+    *   Revise criticamente seu trabalho, respondendo internamente:
+        1. Todas instruções do prompt executadas?
+        2. Análise minuciosa de código/testes realizada?
+        3. Testes incorretos/obsoletos desta sessão removidos/corrigidos?
+        4. Organização de arquivos/pastas (incluindo estrutura espelhada de testes em `tests/unit/[nome_pacote_inferido]/` conforme Diretriz 10) conforme Blueprint e AGV?
+        5. Testes unitários: corretos, passam, cobrem adequadamente (condicionais, loops, exceções)? Cobertura de 100% atingida? Se não, áreas/linhas não cobertas e por quê? Ou Coordenador aprovou?
+        6. Tratamento de erros robusto?
+        7. Docstrings (produção) e `README.md` (pacote) OK?
+            *   Documentação em testes (docstrings p/ módulos, classes, fixtures complexas, funções de teste - conforme recomendado Diretriz 10) considerada/aplicada para clareza?
+    *   Se problemas: corrija. Se persistirem: informe Coordenador.
 
 12. **Gerar Relatório Detalhado da Implementação:**
-    *   "Após auto-revisão e correções, forneça relatório claro, seguindo a estrutura abaixo."
+    *   Após auto-revisão/correções, forneça relatório claro, seguindo estrutura abaixo.
     *   **Estrutura Mandatória para o Relatório:**
         1.  **Introdução:** Resumo.
         2.  **Planejamento Inicial Proposto:** Plano do Passo 3 e sua execução.
-        3.  **Detalhes da Implementação do Módulo Alvo Principal.**
-        4.  **Detalhes da Implementação/Modificação de Módulos Base e `utils` (Apenas os estritamente necessários para o alvo)`.**
-        5.  **Detalhes da Geração de Testes Unitários:** (incluindo Cobertura e justificativa se < 100%)
+        3.  **Detalhes Impl. do Módulo Alvo Principal.**
+        4.  **Detalhes da Impl./Modificação de Módulos Base e `utils` (Só os estritamente necessários p/ o alvo).**
+        5.  **Detalhes Geração Testes Unitários:** (incluindo Cobertura e justif. se < 100%)
         6.  **Documentação Gerada:** Confirme Docstrings e `README.md`.
-        7.  **Resumo da Auto-Revisão Final (incluindo comentário sobre cobertura).**
-        8.  **Verificação de Conformidade com o Método AGV.**
-        9.  **Suposições, Decisões, Desafios ou Desvios Justificados:** Incluir Workarounds (com justificativa detalhada).
+        7.  **Resumo Auto-Revisão Final (c/ comentário sobre cobertura).**
+        8.  **Verificação de Conformidade c/ o Método AGV.**
+        9.  **Suposições, Decisões, Desafios ou Desvios Justificados:** Incluir Workarounds (c/ justificativa detalhada).
         10. **Lista de Todos os Arquivos Criados/Modificados** **nesta tarefa**. 
         11. **Intervenções e Orientações do Coordenador:**
-            *   Se o Coordenador forneceu qualquer orientação significativa, correção de curso, sugestão de depuração, ou instrução específica durante o processo que tenha influenciado as decisões tomadas, ajudado a superar um bloqueio, ou refinado a solução de uma forma não prevista no prompt inicial, resuma essas interações e seu impacto aqui. Se não houve tais interações, declare explicitamente: "A implementação prosseguiu conforme o plano e as diretrizes do prompt, sem necessidade de intervenções ou orientações adicionais do Coordenador que alterassem o escopo ou a abordagem." (Ainda é útil mencionar pequenas ajudas ou confirmações, se ocorreram).
+            *   Se o Coordenador forneceu qualquer orientação significativa, correção de curso, sugestão de depuração, ou instrução específica durante o processo que tenha influenciado as decisões tomadas, ajudado a superar um bloqueio, ou refinado a solução de uma forma não prevista no prompt inicial, resuma essas interações e seu impacto aqui. Se não houve, declare explicitamente: "A impl. prosseguiu conforme o plano e as diretrizes do prompt, sem intervenções ou orientações adicionais do Coordenador que alterassem o escopo ou a abordagem." (Ainda é útil mencionar pequenas ajudas ou confirmações, se ocorreram).
 
 *   **Resultado Esperado:**
-    *   Código Python de produção implementado/modificado (apenas para o alvo e seus pré-reqs diretos), com alta qualidade.
+    *   Código Python de produção impl./modificado (apenas p/ o alvo e seus pré-reqs diretos), com alta qualidade.
     *   Testes unitários (`pytest`) abrangentes.
     *   `README.md` do pacote (se aplicável).
     *   Relatório detalhado conforme estrutura.
