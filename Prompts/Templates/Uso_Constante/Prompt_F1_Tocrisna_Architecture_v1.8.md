@@ -1,4 +1,4 @@
-# AGV Prompt Template: Tocrisna v1.7 - Definição da Arquitetura Técnica
+# AGV Prompt Template: Tocrisna v1.8 - Definição da Arquitetura Técnica
 
 ## Tarefa Principal:
 Definir e documentar uma proposta de arquitetura técnica de alto nível para o projeto descrito abaixo. O foco deve ser na modularidade, clareza, manutenibilidade, e na definição clara dos principais componentes, suas interfaces de comunicação e suas dependências diretas.
@@ -71,8 +71,9 @@ Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta,
 4.  **Definição das Interfaces Principais:** Detalhamento dos contratos de comunicação entre os componentes chave (conforme Diretriz 3).
 5.  **Gerenciamento de Dados (se aplicável):** Como os dados serão persistidos e acessados (ex: Módulo data_access usando SQLAlchemy com padrão Repository).
 6.  **Estrutura de Diretórios Proposta:** Uma sugestão inicial, **preferencialmente utilizando o layout `src` moderno** (com o código principal do pacote dentro de uma pasta `src/nome_do_pacote/`) para melhor organização e empacotamento, mostrando a organização das pastas e arquivos principais.
-7.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
-8.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
+7.  **Arquivo `.gitignore` Proposto:** Um conteúdo sugerido para o arquivo `.gitignore` na raiz do projeto, apropriado para a "Stack Tecnológica Definida" (especialmente a linguagem principal e frameworks). Ele deve incluir padrões comuns para ignorar arquivos compilados, caches, logs genéricos, diretórios de ambiente virtual, e arquivos específicos de IDEs/editores comuns.
+8.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
+9.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
 
 ---
 
