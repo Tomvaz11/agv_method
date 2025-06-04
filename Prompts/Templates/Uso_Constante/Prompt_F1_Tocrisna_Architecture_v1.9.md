@@ -1,4 +1,4 @@
-# AGV Prompt Template: Tocrisna v1.8 - Definição da Arquitetura Técnica
+# AGV Prompt Template: Tocrisna v1.9 - Definição da Arquitetura Técnica
 
 ## Tarefa Principal:
 Definir e documentar uma proposta de arquitetura técnica de alto nível para o projeto descrito abaixo. O foco deve ser na modularidade, clareza, manutenibilidade, e na definição clara dos principais componentes, suas interfaces de comunicação e suas dependências diretas.
@@ -50,17 +50,24 @@ Definir e documentar uma proposta de arquitetura técnica de alto nível para o 
 7.  **Aderência à Stack:** Utilize primariamente as tecnologias definidas na Stack Tecnológica. Se sugerir uma tecnologia *adicional*, justifique claramente a necessidade.
 8.  **Padrões de Design:** Sugira e aplique padrões de design relevantes (ex: Repository, Service Layer, Observer, Strategy, etc.) onde eles agregarem valor à estrutura e manutenibilidade. Justifique brevemente a escolha.
 9.  **Escalabilidade (Básica):** Considere como a arquitetura pode suportar um crescimento moderado no futuro (ex: design sem estado para serviços, possibilidade de paralelizar tarefas usando `concurrent.futures`).
+10. **Especificação de Tecnologias para Tipos de Componentes:** Para garantir consistência e aderência à stack definida, ao descrever os componentes/módulos, você DEVE especificar a tecnologia ou biblioteca principal a ser utilizada para certos tipos de artefatos, quando aplicável e relevante para a arquitetura. Por exemplo:
+    *   **Modelos de Dados (DTOs, entidades de domínio, configurações):** Especificar o uso de **Pydantic `BaseModel`** como a tecnologia padrão para sua definição, visando validação de dados e facilidades de serialização.
+    *   **Camada de Acesso a Dados (se houver BD):** Especificar o ORM (ex: SQLAlchemy) ou a biblioteca de acesso.
+    *   **APIs Web (se houver):** Especificar o framework (ex: FastAPI, Flask).
+    *   **Interface de Usuário (se houver):** Especificar o framework de UI (ex: PySide6).
+    *   (Adicionar outros tipos de componentes/tecnologias conforme a necessidade do projeto).
+Estas especificações devem constar na descrição de cada componente relevante no Blueprint Arquitetural.
 
 ## Resultado Esperado (Blueprint Arquitetural):
 Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta, incluindo:
 
-1.  **Visão Geral da Arquitetura:** Um breve resumo da abordagem arquitetural escolhida (ex: Arquitetura em Camadas, Microsserviços simples, Baseada em Eventos, etc.)  e uma justificativa.
+1.  **Visão Geral da Arquitetura:** Um breve resumo da abordagem arquitetural escolhida (ex: Arquitetura em Camadas, Microsserviços simples, Baseada em Eventos, etc.) e uma justificativa.
 2.  **Diagrama de Componentes (Simplificado):** Um diagrama de blocos mostrando os principais módulos/componentes e suas interconexões.
 3.  **Descrição dos Componentes/Módulos:** 
     -   Para cada componente principal:
         -   Nome claro (ex: `fotix.core.duplicate_finder`).
         -   Responsabilidade principal.
-        -   Tecnologias chave da stack que serão usadas nele.
+        -   **Tecnologias Chave da Stack que Serão Usadas Nele:** Conforme a Diretriz 10 ("Especificação de Tecnologias para Tipos de Componentes"), indique a biblioteca ou framework principal para este componente (ex: "Pydantic `BaseModel`" para módulos de modelos de dados; "PySide6" para componentes de UI; "FastAPI" para um serviço de API; `logging` stdlib para um serviço de logging, etc.). Se for apenas lógica Python pura sem uma biblioteca externa dominante, indique "Python (Lógica Pura)".
         -   **Dependências Diretas (Lista explícita - Diretriz 4).**
     -   Para a Camada de Apresentação (UI) (ex: `fotix.ui`):**
         -   Além da descrição geral da UI, **proponha uma decomposição em principais Telas/Views ou Componentes de UI reutilizáveis significativos.**
@@ -68,12 +75,13 @@ Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta,
             -   Descreva brevemente seu propósito principal.
             -   Liste os principais serviços da Camada de Aplicação com os quais ele provavelmente interagirá.
             -   Sugira se sua implementação pode ser considerada uma unidade de trabalho relativamente independente.
-4.  **Definição das Interfaces Principais:** Detalhamento dos contratos de comunicação entre os componentes chave (conforme Diretriz 3).
-5.  **Gerenciamento de Dados (se aplicável):** Como os dados serão persistidos e acessados (ex: Módulo data_access usando SQLAlchemy com padrão Repository).
+4.  **Definição das Interfaces Principais:** Detalhamento dos contratos de comunicação entre os componentes chave (conforme Diretriz 3), incluindo como os componentes recebem suas configurações iniciais (priorizando `__init__`).
+5.  **Gerenciamento de Dados (se aplicável):** Como os dados serão persistidos e acessados (ex: Módulo data_access usando SQLAlchemy com padrão Repository, ou especificando Pydantic `BaseModel` para modelos de dados se não houver persistência complexa).
 6.  **Estrutura de Diretórios Proposta:** Uma sugestão inicial, **preferencialmente utilizando o layout `src` moderno** (com o código principal do pacote dentro de uma pasta `src/nome_do_pacote/`) para melhor organização e empacotamento, mostrando a organização das pastas e arquivos principais.
 7.  **Arquivo `.gitignore` Proposto:** Um conteúdo sugerido para o arquivo `.gitignore` na raiz do projeto, apropriado para a "Stack Tecnológica Definida" (especialmente a linguagem principal e frameworks). Ele deve incluir padrões comuns para ignorar arquivos compilados, caches, logs genéricos, diretórios de ambiente virtual, e arquivos específicos de IDEs/editores comuns.
 8.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
 9.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
+10. **Exemplo de Bootstrapping/Inicialização (se aplicável e útil para clareza):** Um pequeno trecho de código exemplo (conceitual, como um `main.py` simplificado) demonstrando como os principais serviços seriam instanciados e configurados, especialmente focando em como as configurações são injetadas (via `__init__` ou métodos `configure()`).
 
 ---
 
