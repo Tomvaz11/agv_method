@@ -1,4 +1,4 @@
-# AGV Prompt Template: ImplementadorMestre v2.9 - Implementação Autônoma Guiada com Auto-Revisão
+# AGV Prompt Template: ImplementadorMestre v3.4 - Implementação Autônoma Guiada com Auto-Revisão
 
 **Tarefa Principal:** Implementar ou modificar o componente lógico alvo especificado abaixo, utilizando o Blueprint Arquitetural como guia, **com foco estrito no escopo da tarefa atual**. Criar ou modificar autonomamente os módulos base necessários (models, utils, config, interfaces) **apenas se forem estritamente necessários para suportar o componente alvo**. Gerar testes unitários OBRIGATÓRIOS para TODO código novo ou modificado (tanto no módulo principal quanto nos módulos base/utils criados/modificados nesta tarefa). Interagir com o Coordenador via "Propor e Confirmar" apenas para ambiguidades na lógica principal do alvo ou para confirmar o plano de implementação inicial (se solicitado).
 
@@ -65,11 +65,11 @@
     *   **6.1. Diretrizes Específicas para Módulos Base (Models, Utils, Config, Interfaces):**
 
         *   **`Models` (ex: `[nome_pacote_inferido]/core/models.py` ou `[nome_pacote_inferido]/domain/models.py`):**
-            *   Use **Pydantic `BaseModel`** (preferencial) ou `dataclasses` para definir estruturas de dados claras e com validação.
+            *   Implemente todas as estruturas de dados (modelos) utilizando a **tecnologia especificada para modelos no `@Blueprint_Arquitetural.md`**. (Espera-se que o Blueprint designe Pydantic `BaseModel` para esta finalidade).
             *   Aplique **Type Hints** rigorosos (PEP 484) a todos os campos.
-            *   Mantenha os modelos focados em **dados**, evitando lógica de negócio complexa dentro deles (a lógica deve residir nos serviços ou no core).
-            *   Adicione **Docstrings** (PEP 257) claras para cada modelo e campo importante.
-
+            *   Mantenha os modelos focados estritamente em **dados e suas validações pertinentes (conforme capacidade da tecnologia designada no Blueprint)**, evitando lógica de negócio complexa dentro deles.
+            *   Adicione **Docstrings** (PEP 257) claras para cada modelo e seus campos importantes.
+            
         *   **`Utils` (ex: `[nome_pacote_inferido]/utils/helpers.py`):**
             *   Crie funções **pequenas, puras (sem efeitos colaterais sempre que possível) e com responsabilidade única (SRP)**.
             *   Garanta que as funções em `utils` **NÃO tenham dependências** de outros módulos internos específicos da aplicação `[nome_pacote_inferido]` (como `[nome_pacote_inferido]/core`, `[nome_pacote_inferido]/application`). Elas devem ser genéricas.
@@ -100,9 +100,9 @@
     *   Crie/atualize `README.md` no diretório do pacote do "Componente Alvo Principal" (ex: `src/[nome_pacote_inferido]/infrastructure/README.md`), descrevendo o pacote e seus módulos.
 
 10.  **Gerar Testes Unitários - MANDATÓRIO E ABRANGENTE:**
-        *   **É OBRIGATÓRIO gerar testes unitários (`pytest`) para TODO o código de produção novo ou significativamente modificado NESTA TAREFA.** Isso inclui o **Componente Alvo Principal** e quaisquer **Módulos Base ou `utils`** criados/modificados para suportá-lo.
+        *   É OBRIGATÓRIO gerar testes unitários (`pytest`) para TODO o código de produção novo ou significativamente modificado NESTA TAREFA. Isso inclui o **Componente Alvo Principal** e quaisquer **Módulos Base ou `utils`** criados/modificados para suportá-lo.
         *   **Não omita testes.** A diretriz é **absoluta**.
-        *   A meta de cobertura é de **100%.**
+        *   A meta de cobertura é de **100% para toda a lógica de implementação concreta.** Para arquivos `.py` que definem primariamente interfaces abstratas (ABCs com métodos `@abstractmethod`), espera-se que o arquivo de teste espelhado (`test_nome_interface.py`) correspondente seja criado contendo testes que validem o contrato básico da interface (ex: verificar se não é instanciável, se implementações concretas conhecidas são subclasses, se os métodos abstratos esperados existem). A cobertura de código para esses arquivos de teste de interface pode ser inferior a 100% devido à natureza dos métodos abstratos, e isso é aceitável. A meta de 100% de cobertura de lógica aplica-se rigorosamente às *implementações concretas* dessas interfaces.
         *   Testes devem cobrir casos relevantes: sucesso, erro e borda.
         *   Use **mocks** (`unittest.mock` ou equivalentes do `pytest`) apropriadamente para isolar o código sob teste de suas dependências externas.
         *   **Documentação dos Testes (Recomendado):**
@@ -116,7 +116,7 @@
         *   **Regra:** Testes para `src/[nome_pacote_inferido]/[sub/pacotes...]/modulo.py` DEVEM residir obrigatoriamente em `tests/unit/[nome_pacote_inferido]/[sub/pacotes...]/test_modulo.py`.
         *   **Restrição:** É **PROIBIDO** colocar arquivos de teste diretamente sob o diretório `tests/unit/` (ex: `tests/unit/test_modulo.py`) se o módulo fonte correspondente estiver localizado dentro de `src/[nome_pacote_inferido]/`. A estrutura espelhada (`tests/unit/[nome_pacote_inferido]/...`) é obrigatória.
         *   Crie todos os diretórios intermediários necessários (ex: `tests/unit/[nome_pacote_inferido]/`, `tests/unit/[nome_pacote_inferido]/[camada]/`) e os arquivos `__init__.py` dentro deles para garantir que os testes sejam corretamente descobertos e organizados como pacotes.
-        *   Se identificar lacunas na cobertura, **DEVE** tentar adicionar os testes faltantes. Se o Coordenador aprovar a cobertura atual, prossiga.
+        *   Se identificar lacunas na cobertura da lógica de implementação concreta, **DEVE** tentar adicionar os testes faltantes. Se o Coordenador aprovar a cobertura atual, prossiga.
 
 11. **Checklist Auto-Revisão Final (Antes do Relatório):**
     *   Revise criticamente seu trabalho, respondendo internamente:
