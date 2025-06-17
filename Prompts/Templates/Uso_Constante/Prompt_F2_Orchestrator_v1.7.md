@@ -28,10 +28,15 @@
     *   Priorize módulos de infraestrutura e core que são pré-requisitos para funcionalidades mais complexas.
     *   Se o Blueprint Arquitetural propuser uma decomposição da Camada de UI em Telas/Views ou Componentes de UI significativos, cada um desses componentes de UI deve ser tratado como um 'Módulo Principal' individual na ordem de implementação. Priorize a implementação de componentes de UI que dependam de funcionalidades de backend já implementadas ou que sejam fundamentais para o fluxo inicial do usuário.
 
-5.  **Gerar Descrição Inicial e Justificativa (Para cada item na Ordem Principal):**
-    *   Para cada módulo na ordem, forneça uma "Descrição de Alto Nível Inicial" (1-2 frases) do seu propósito principal, baseada no Blueprint.
-    *   Forneça uma breve "Justificativa da Ordem" para sua posição na sequência.
-    *   Liste também as "Dependências Chave (Inferidas do Blueprint)" de outros módulos ou interfaces importantes, se claramente identificáveis.
+5.  **Gerar Detalhes para Cada Item na Ordem Principal (Descrição, Justificativa e Lista Completa de Dependências Diretas do Blueprint):**
+    *   Para **cada item de Módulo Principal** na "Ordem de Implementação Sugerida":
+        *   Forneça uma "Descrição de Alto Nível Inicial" (1-2 frases concisas) do seu propósito principal, baseada diretamente na "Responsabilidade Principal" definida para ele no Blueprint Arquitetural.
+        *   Forneça uma breve "Justificativa da Ordem" explicando por que ele está posicionado onde está na sequência, considerando suas dependências e o fluxo geral do projeto.
+        *   **Liste OBRIGATORIAMENTE e de forma EXAUSTIVA todas as "Dependências Diretas" sob um título claro como "Dependências Diretas (Conforme Blueprint Arquitetural)".**
+            *   Estas dependências devem ser extraídas **literalmente** da lista de "Dependências Diretas" fornecida para este módulo na seção "Descrição dos Componentes/Módulos" do `@Blueprint_Arquitetural.md`.
+            *   Inclua todos os tipos de dependências listadas no Blueprint: outros módulos principais, interfaces de infraestrutura (ex: `fotix.infrastructure.interfaces.IHashingService`), modelos de domínio significativos (ex: `fotix.domain.models.FileEntry`), ou módulos de utilitários/configuração se explicitamente listados como dependências diretas no Blueprint.
+            *   **NÃO OMITA dependências de interface (ABCs) ou de módulos base**, mesmo que elas possam parecer ser transitivas através de outros componentes já listados ou se o módulo dependente for um "Módulo Base" por si só. O objetivo aqui é ter uma referência cruzada completa com o Blueprint para cada item da ordem.
+            *   Se o Blueprint não listar explicitamente nenhuma dependência direta para um módulo, indique "Nenhuma dependência direta principal listada no Blueprint."
 
 6.  **Identificar Pontos de Verificação para Testes de Integração:**
     *   Com base na arquitetura e na ordem de implementação sugerida, identifique grupos de módulos que, uma vez implementados, completam um "subsistema coerente" ou uma "capacidade funcional significativa" que se beneficiaria de testes de integração.
