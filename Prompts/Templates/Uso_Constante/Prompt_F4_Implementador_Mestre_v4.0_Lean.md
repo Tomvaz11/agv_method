@@ -4,9 +4,9 @@
 
 **Contexto Essencial (Fornecido pelo Coordenador):**
 
-1.  **Componente Alvo Principal:** `fotix.application.services.scan_service`
+1.  **Componente Alvo Principal:** `fotix.infrastructure.implementations.zip_service.ZipService`
 2.  **Blueprint Arquitetural:** `@Output_BluePrint_Arquitetural_Tocrisna_v5.0.md`
-3.  **Ordem de Implementação:** `@Output_Ordem_Para_Implementacao_Geral_v3.2.md`
+3.  **Ordem de Implementação:** `@Output_Ordem_Para_Implementacao_Geral_v2.0_Lean.md`
 4.  **Contexto Adicional do Workspace:** (Anexar arquivos .py relevantes de dependências já implementadas)
 
 **Diretrizes Essenciais:**
