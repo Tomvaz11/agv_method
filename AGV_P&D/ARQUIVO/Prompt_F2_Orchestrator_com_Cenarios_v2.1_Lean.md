@@ -4,10 +4,9 @@
 
 **Input Principal (Blueprint Arquitetural):**
 
-```markdown
 # --- Conteúdo do Blueprint Arquitetural ---
 [COLE AQUI O CONTEÚDO COMPLETO DO ARQUIVO MARKDOWN DO BLUEPRINT GERADO PELA TOCRISNA]
-```
+
 
 **Diretrizes Essenciais:**
 

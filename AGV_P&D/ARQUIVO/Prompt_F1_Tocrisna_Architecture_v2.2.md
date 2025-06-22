@@ -1,54 +1,33 @@
-# AGV Prompt Template: Tocrisna v2.0 - Definição da Arquitetura Técnica
+# AGV Prompt Template: Tocrisna v2.2 - Definição da Arquitetura Técnica
 
 ## Tarefa Principal:
 Definir e documentar uma proposta de arquitetura técnica de alto nível para o projeto descrito abaixo. O foco deve ser na modularidade, clareza, manutenibilidade, e na definição clara dos principais componentes, suas interfaces de comunicação e suas dependências diretas.
 
-## Contexto e Definições Iniciais do Projeto:
+## Contexto e Definições Iniciais do Projeto (Fornecido por Você - Fase 1):
 
--   **Nome do Projeto:** `Fotix`
+-   **Nome do Projeto:** `[NOME_DO_PROJETO]`
 
 -   **Visão Geral / Objetivo Principal:**
-
-    Aplicativo desktop desenvolvido em Python, com backend robusto e interface gráfica (GUI) completa, projetado para localizar e remover arquivos duplicados (idênticos) de imagens e vídeos em múltiplos diretórios e arquivos ZIP.
-    O sistema analisa arquivos de mídia e, **somente ao identificar dois ou mais arquivos idênticos**, utiliza um algoritmo inteligente para decidir qual arquivo manter e qual remover, com base em critérios como maior resolução da imagem, data de criação mais antiga e estrutura do nome do arquivo (evitando cópias como "(1)", "cópia", etc.).
-    A arquitetura é otimizada para grandes volumes de dados, utilizando processamento assíncrono, batching progressivo e execução paralela.
-    O aplicativo também oferece sistema de backup e restauração para recuperação segura dos arquivos removidos.
+    [DESCRIÇÃO CLARA DO PROPÓSITO GERAL DO SOFTWARE, O PROBLEMA QUE RESOLVE E SEU OBJETIVO FINAL.]
     
 -   **Funcionalidades Chave (Alto Nível):**
-    - Análise de arquivos de mídia (imagens e vídeos) em diretórios e arquivos ZIP.
-    - Identificação precisa de arquivos duplicados (idênticos) utilizando hashing.
-    - Seleção automática do arquivo a ser mantido entre duplicatas com base em critérios objetivos.
-    - Remoção segura de duplicatas com backup automático.
-    - Recuperação fácil de arquivos removidos através do sistema de restauração.
-    - Processamento otimizado para grandes volumes de dados com execução assíncrona, paralela e em lotes.
-    - Interface gráfica intuitiva para configuração e acompanhamento.
-    - Geração de logs detalhados e relatórios resumidos com estatísticas pós-processamento.
+    [LISTA (BULLET POINTS) DAS PRINCIPAIS CAPACIDADES OU FEATURES QUE O SOFTWARE DEVE TER.]
 
--   **Público Alvo / Ambiente de Uso:** `Usuários finais em desktop (Windows)`
+-   **Público Alvo / Ambiente de Uso:** `[QUEM USARÁ O SOFTWARE E EM QUE CONTEXTO? ISSO AJUDA A INFERIR REQUISITOS NÃO FUNCIONAIS. Ex: Usuários finais em desktop, Aplicação web interna, Serviço de backend.]`
 
 -   **Stack Tecnológica Definida:**
-    - **Linguagem Principal:** Python 3.10+
-    - **GUI (Interface Gráfica):** PySide6 (Qt for Python) — framework moderno para criação de interfaces desktop nativas.
-    - **Motor de Escaneamento de Duplicatas:** BLAKE3 + pré-filtragem por tamanho com `os.path.getsize` para otimização inicial.
-    - **Manipulação de Arquivos e Sistema de Arquivos:** pathlib + shutil + send2trash (remoção segura) + concurrent.futures (execução paralela).
-    - **Descompactação Otimizada:** stream-unzip para leitura e extração progressiva de arquivos ZIP.
+    -   Linguagem Principal: `[Ex: Python 3.10+]`
+    -   Framework Principal (se houver): `[Ex: FastAPI, Flask, Nenhum, PySide6]`
+    -   Bibliotecas Essenciais Pré-definidas: `[Ex: Pillow, numpy, LangChain, BLAKE3, send2trash, stream-unzip]`
+    -   Banco de Dados (se aplicável): `[Ex: PostgreSQL com pgvector, SQLite, Nenhum]`
+    -   Outras Tecnologias Chave: `[Ex: Docker, MLflow]`
     
--   **Requisitos Não Funcionais Iniciais:**
-    - Capacidade de processar grandes volumes (100.000+ arquivos) sem travamentos.
-    - Identificação rápida de duplicatas com uso eficiente de CPU, RAM e disco.
-    - Backups automáticos para garantir segurança de dados.
-    - GUI responsiva mesmo sob alta carga de processamento.
-    - Compatibilidade garantida com Windows 10 ou superior.
-    - Descompactação eficiente e rápida de grandes arquivos ZIP com baixo uso de memória.
-    - Tratamento de erros em operações críticas de escrita e remoção.
+-   **Requisitos Não Funcionais Iniciais (se houver):**
+    -   Performance Esperada: `[Ex: Processar X itens por segundo, Tempo de resposta < Y ms, Foco em alta performance]`
+    -   Escalabilidade: `[Ex: Deve suportar Z usuários concorrentes, Volume de dados esperado]`
+    -   Segurança: `[Ex: Nível básico de segurança para dados de usuário, Autenticação necessária]`
 
--   **Principais Restrições (se houver):**
-    - Suporte exclusivo para Windows na primeira versão.
-    - Sem integração com bancos de dados externos.
-    - Análise limitada a arquivos idêticos (sem similaridade perceptual).
-    - Suporte apenas ao formato ZIP para arquivos compactados.
-    - Sem sistema de atualização automática previsto na primeira versão.
-    - Desempenho condicionado à capacidade de hardware local do usuário.
+-   **Principais Restrições (se houver):** `[Ex: Orçamento limitado, Prazo curto, Deve integrar com API X existente]`
 
 ## Diretrizes e Princípios Arquiteturais (Filosofia AGV):
 1.  **Modularidade e Separação de Responsabilidades (SRP):** Proponha uma divisão clara em módulos/componentes lógicos, cada um com uma responsabilidade bem definida. Minimize o acoplamento entre eles e maximize a coesão interna.

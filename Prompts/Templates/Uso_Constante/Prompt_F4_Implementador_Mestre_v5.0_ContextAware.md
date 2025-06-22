@@ -2,11 +2,11 @@
 
 **Tarefa Principal:** Implementar o componente de software alvo, incluindo seus testes unitários, aderindo estritamente ao `Blueprint Arquitetural` e às diretrizes essenciais abaixo.
 
-**Contexto Essencial (Fornecido pelo Coordenador):**
+**Contexto Essencial:**
 
-1.  **Componente Alvo Principal:** `fotix.application.services.scan_service.ScanService`
-2.  **Blueprint Arquitetural:** `@Output_BluePrint_Arquitetural_Tocrisna_v5.0.md`
-3.  **Ordem de Implementação:** `@Output_Ordem_Para_Implementacao_Geral_v2.0_Lean.md`
+1.  **Componente Alvo Principal:** `Alvo Zero: Setup do Projeto`
+2.  **Blueprint Arquitetural:** `@Output_BluePrint_Arquitetural_Tocrisna_v6.2.md`
+3.  **Ordem de Implementação:** `@Output_Ordem_Para_Implementacao_Geral_v4.3_Lean.md`
 4.  **Contexto Adicional do Workspace:** (Anexar todos os arquivos .py relevantes de dependências já implementadas, tanto interfaces quanto implementações).
 
 **Diretrizes Essenciais:**
