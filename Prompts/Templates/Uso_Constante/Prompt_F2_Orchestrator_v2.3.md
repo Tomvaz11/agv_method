@@ -1,6 +1,6 @@
 # AGV Prompt: OrchestratorHelper v2.3 (Lean com Cenários de TI)
 
-**Tarefa Principal:** Analisar o `@Blueprint_Arquitetural.md`, que é a fonte única da verdade sobre a arquitetura. Suas responsabilidades são: (1) Derivar uma ordem de implementação lógica e (2) Para cada ponto de parada, gerar o objetivo e os cenários chave para os Testes de Integração.
+**Tarefa Principal:** Analisar o `@Blueprint_Arquitetural.md`, que é a fonte única da verdade sobre a arquitetura. Suas responsabilidades são: (1) Gerar o "Alvo 0" para setup do projeto, (2) Derivar uma ordem de implementação lógica para os demais módulos, e (3) Gerar cenários chave para os Testes de Integração.
 
 **Input Principal (Blueprint Arquitetural):**
 
@@ -12,14 +12,14 @@
 
 1.  **Análise do Grafo de Dependências:** Analise as dependências diretas entre os "Módulos Principais" no Blueprint para definir a sequência.
 
-2.  **Criação do "Alvo 0 - Setup do Projeto":** Sua primeira tarefa é SEMPRE gerar um item inicial na ordem de implementação chamado **"Alvo 0: Setup do Projeto"**. A responsabilidade deste alvo é criar o andaime ("scaffolding") essencial do projeto, incluindo:
+2.  **Criação do "Alvo 0 - Setup do Projeto Profissional":** Sua primeira tarefa é SEMPRE gerar um item inicial na ordem de implementação chamado **"Alvo 0: Setup do Projeto Profissional"**. A responsabilidade deste alvo é criar o andaime ("scaffolding") completo, incluindo:
     *   A estrutura de diretórios base (`src/nome_do_projeto`, `tests/unit`, `tests/integration`).
-    *   O arquivo `pyproject.toml` com as configurações mínimas para dependências, `pytest` (com `pythonpath`) e `pyright`/`pylance` (com `extraPaths`).
-    *   Os arquivos `__init__.py` necessários nos diretórios do pacote para defini-los como pacotes Python.
-    *   Um arquivo `README.md` inicial.
-    *   Um arquivo `.gitignore` inicial.
+    *   Os arquivos `__init__.py` necessários.
+    *   O arquivo `pyproject.toml` configurando dependências, `pytest`, e as ferramentas de qualidade **`ruff`** (linter) e **`black`** (formatador).
+    *   O arquivo de configuração do `pre-commit` (`.pre-commit-config.yaml`) para automatizar a execução de `ruff` e `black`.
+    *   Instruções claras para o Coordenador sobre como instalar as dependências (`pip install -e .[dev]`) e inicializar o `pre-commit` (`pre-commit install`).
 
-3.  **Geração da Ordem Sequencial:** Crie uma lista numerada contendo **apenas os nomes completos dos "Módulos Principais"**. A sequência deve respeitar as dependências.
+3.  **Geração da Ordem Sequencial:** Após o "Alvo 0", crie uma lista numerada contendo **apenas os nomes completos dos "Módulos Principais"**. A sequência deve respeitar as dependências.
 
 4.  **Identificação de Pontos de Teste de Integração (TI):**
     *   Identifique grupos de módulos recém-listados que completam um "subsistema coerente" ou um "fluxo funcional significativo".

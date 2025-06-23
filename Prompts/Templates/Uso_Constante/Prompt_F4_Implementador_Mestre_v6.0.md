@@ -52,5 +52,8 @@
 *   **Confirmação de Testes:**
     Testes unitários foram criados para todo o código de produção, seguindo a estrutura espelhada e visando 100% de cobertura da lógica de implementação concreta.
 
+*   **Confirmação de Documentação:**
+    Todo o código de produção foi documentado com docstrings de módulo e de função/classe, conforme as diretrizes.    
+
 *   **Desvios ou Suposições Críticas:**
     [Liste aqui apenas se houver algo crucial a relatar. Caso contrário, escreva: 'Nenhum.']
