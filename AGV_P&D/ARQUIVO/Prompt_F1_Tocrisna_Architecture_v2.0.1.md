@@ -1,4 +1,4 @@
-# AGV Prompt Template: Tocrisna v2.0 - Definição da Arquitetura Técnica
+# AGV Prompt Template: Tocrisna v2.1 - Definição da Arquitetura Técnica
 
 ## Tarefa Principal:
 Definir e documentar uma proposta de arquitetura técnica de alto nível para o projeto descrito abaixo. O foco deve ser na modularidade, clareza, manutenibilidade, e na definição clara dos principais componentes, suas interfaces de comunicação e suas dependências diretas.
@@ -57,6 +57,10 @@ Definir e documentar uma proposta de arquitetura técnica de alto nível para o 
     *   **Interface de Usuário (se houver):** Especificar o framework de UI (ex: PySide6).
     *   (Adicionar outros tipos de componentes/tecnologias conforme a necessidade do projeto).
 Estas especificações devem constar na descrição de cada componente relevante no Blueprint Arquitetural.
+11. **Configuração do Projeto (pyproject.toml):** A arquitetura não se limita ao código-fonte, mas também à configuração que o suporta. Gere o conteúdo inicial para um arquivo `pyproject.toml` na raiz do projeto. Este arquivo é crucial e deve:
+    *   Definir os metadados básicos do projeto (nome, versão, etc.).
+    *   Listar as dependências essenciais da stack tecnológica.
+    *   **CRUCIAL:** Incluir as seções `[tool.pytest.ini_options]` e `[tool.pyright]` para configurar explicitamente o `pythonpath` e `extraPaths` para apontar para o diretório `src/`, garantindo a consistência entre o ambiente de execução de testes e a análise estática do IDE.
 
 ## Resultado Esperado (Blueprint Arquitetural):
 Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta, incluindo:
@@ -84,16 +88,8 @@ Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta,
 4.  **Definição das Interfaces Principais:** Detalhamento dos contratos de comunicação entre os componentes chave (conforme Diretriz 3), incluindo como os componentes recebem suas configurações iniciais (priorizando `__init__`).
 5.  **Gerenciamento de Dados (se aplicável):** Como os dados serão persistidos e acessados (ex: Módulo data_access usando SQLAlchemy com padrão Repository, ou especificando Pydantic `BaseModel` para modelos de dados se não houver persistência complexa).
 6.  **Estrutura de Diretórios Proposta:** Uma sugestão inicial, **preferencialmente utilizando o layout `src` moderno** (com o código principal do pacote dentro de uma pasta `src/nome_do_pacote/`) para melhor organização e empacotamento, mostrando a organização das pastas e arquivos principais.
-7.  **Arquivo `.gitignore` Proposto:** Um conteúdo sugerido, **completo e pronto para uso**, para o arquivo `.gitignore` na raiz do projeto, apropriado para a "Stack Tecnológica Definida". Ele deve ser abrangente, cobrindo caches, ambientes virtuais, arquivos de IDEs comuns (VS Code, PyCharm), e arquivos específicos do SO.
-8.  **Arquivo `README.md` Proposto:** A geração do **conteúdo completo** para um arquivo `README.md` inicial e profissional. O README deve seguir uma estrutura padrão, contendo, no mínimo:
-    *   O nome do projeto e uma descrição concisa.
-    *   Badges de status (pode usar placeholders).
-    *   Seção "Sobre o Projeto".
-    *   Seção "Stack Tecnológica".
-    *   Seção "Como Começar" (com instruções para instalar dependências e rodar o projeto).
-    *   Seção "Como Executar os Testes".
-    *   Seção "Estrutura do Projeto" (uma breve explicação das pastas principais).
-9.  **Arquivo `LICENSE` Proposto:** Uma sugestão de licença de software (ex: MIT, Apache 2.0) e a geração do **texto completo** correspondente para o arquivo `LICENSE` na raiz do projeto. Se nenhuma for especificada, sugira a MIT como um padrão seguro.
-10.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
-11.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
-12. **Exemplo de Bootstrapping/Inicialização (se aplicável e útil para clareza):** Um pequeno trecho de código exemplo (conceitual, como um `main.py` simplificado) demonstrando como os principais serviços seriam instanciados e configurados, especialmente focando em como as configurações são injetadas (via `__init__` ou métodos `configure()`).
+7.  **Arquivo `.gitignore` Proposto:** Um conteúdo sugerido para o arquivo `.gitignore` na raiz do projeto, apropriado para a "Stack Tecnológica Definida" (especialmente a linguagem principal e frameworks). Ele deve incluir padrões comuns para ignorar arquivos compilados, caches, logs genéricos, diretórios de ambiente virtual, e arquivos específicos de IDEs/editores comuns.
+8.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
+9.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
+10. **Exemplo de Bootstrapping/Inicialização (se aplicável e útil para clareza):** Um pequeno trecho de código exemplo (conceitual, como um `main.py` simplificado) demonstrando como os principais serviços seriam instanciados e configurados, especialmente focando em como as configurações são injetadas (via `__init__` ou métodos `configure()`).
+11. **Arquivo `pyproject.toml` Proposto:** O conteúdo completo sugerido para o arquivo `pyproject.toml` na raiz do projeto.

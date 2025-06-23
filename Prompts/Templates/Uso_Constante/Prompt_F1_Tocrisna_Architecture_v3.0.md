@@ -1,4 +1,4 @@
-# AGV Prompt Template: Tocrisna v2.0 - Definição da Arquitetura Técnica
+# AGV Prompt Template: Tocrisna v3.0 - Definição da Arquitetura Técnica
 
 ## Tarefa Principal:
 Definir e documentar uma proposta de arquitetura técnica de alto nível para o projeto descrito abaixo. O foco deve ser na modularidade, clareza, manutenibilidade, e na definição clara dos principais componentes, suas interfaces de comunicação e suas dependências diretas.
@@ -94,6 +94,8 @@ Um documento (preferencialmente em Markdown) descrevendo a arquitetura proposta,
     *   Seção "Como Executar os Testes".
     *   Seção "Estrutura do Projeto" (uma breve explicação das pastas principais).
 9.  **Arquivo `LICENSE` Proposto:** Uma sugestão de licença de software (ex: MIT, Apache 2.0) e a geração do **texto completo** correspondente para o arquivo `LICENSE` na raiz do projeto. Se nenhuma for especificada, sugira a MIT como um padrão seguro.
-10.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
-11.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
-12. **Exemplo de Bootstrapping/Inicialização (se aplicável e útil para clareza):** Um pequeno trecho de código exemplo (conceitual, como um `main.py` simplificado) demonstrando como os principais serviços seriam instanciados e configurados, especialmente focando em como as configurações são injetadas (via `__init__` ou métodos `configure()`).
+10. **Arquivo `CONTRIBUTING.md` Proposto:** A geração de um **template de conteúdo** para o `CONTRIBUTING.md`, descrevendo como contribuir para um projeto que segue o Método AGV (ex: seguir o blueprint, garantir testes, etc.).
+11. **Estrutura do `CHANGELOG.md`:** A geração de um arquivo `CHANGELOG.md` inicial, contendo apenas a estrutura padrão (ex: `## [Unreleased]`, `## [0.1.0] - YYYY-MM-DD`) para ser preenchido futuramente.
+12.  **Considerações de Segurança:** Resumo dos princípios de segurança aplicados.
+13.  **Justificativas e Trade-offs:** Breve explicação das principais decisões arquiteturais e por que alternativas foram descartadas (se relevante).
+14. **Exemplo de Bootstrapping/Inicialização (se aplicável e útil para clareza):** Um pequeno trecho de código exemplo (conceitual, como um `main.py` simplificado) demonstrando como os principais serviços seriam instanciados e configurados, especialmente focando em como as configurações são injetadas (via `__init__` ou métodos `configure()`).
