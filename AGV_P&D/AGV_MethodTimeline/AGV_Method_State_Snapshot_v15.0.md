@@ -4,62 +4,70 @@ Farei o meu melhor para gerar o snapshot mais **exaustivo, profundo e contextual
 
 ---
 
-**Snapshot Detalhado e Contextualizado da Colaboração – Método AGV (v4.0 - Pós-Recalibração Total)**
+**Snapshot Detalhado e Contextualizado da Colaboração – Método AGV (v5.0 - Pós-Validação do Backend)**
 
 **I. Visão Central e Filosofia do Método AGV (Assistência Generativa à Velocidade)**
 
-*   **Objetivo Principal:** Desenvolver e refinar um método estruturado de colaboração humano-IA para a criação de software de **qualidade profissional sênior**. O foco é em código limpo, arquitetura robusta e escalável, alta cobertura de testes e manutenibilidade.
-*   **Filosofia Atual ("Lean & Strategic" v4.0):** Nossa filosofia evoluiu do "microgerenciamento" para a **"Direção Estratégica"**, baseada nos seguintes pilares:
-    *   **Confiança na IA:** Confiamos que os LLMs de ponta (como Gemini 1.5 Pro) possuem um vasto conhecimento latente de boas práticas. Nossa tarefa é guiar, não ditar cada caractere.
+*   **Objetivo Principal:** Desenvolver e refinar um método estruturado de colaboração humano-IA para a criação de software de **qualidade profissional sênior**. O foco é em código limpo, arquitetura robusta e escalável, alta cobertura de testes, manutenibilidade e automação de qualidade.
+
+*   **Filosofia Atual ("Sênior-Level AGV" v5.0):** Nossa filosofia evoluiu do "microgerenciamento" para a **"Direção Estratégica e Auditoria"**, baseada nos seguintes pilares:
+    *   **Confiança na Capacidade da IA como "Peer Sênior":** Confiamos que os LLMs de ponta (como Gemini) possuem um vasto conhecimento latente de boas práticas. Nossa tarefa é guiar, não ditar. Tratamos a IA como um colega de equipe sênior que pode, inclusive, propor soluções e identificar ambiguidades.
     *   **Foco no "O Quê", Não no "Como":** Nossos prompts definem os objetivos, requisitos e critérios de qualidade (`O Quê`), dando à IA autonomia em `Como` alcançar o resultado.
     *   **Fonte Única da Verdade (SSOT):** Reforçamos a separação de responsabilidades dos nossos artefatos para evitar sobrecarga de contexto e conflitos.
-        *   O **Blueprint (F1)** é a SSOT para a **arquitetura**.
-        *   A **Ordem de Implementação (F2)** é a SSOT para a **sequência de trabalho**.
-        *   O **Implementador (F4)** usa a Ordem para saber seu alvo e o Blueprint para saber os detalhes de construção, focando em interfaces em vez de implementações concretas quando possível.
+        *   O **Blueprint (F1)** é a SSOT para a **arquitetura, governança e documentação inicial**.
+        *   A **Ordem de Implementação (F2)** é a SSOT para a **sequência de trabalho e planos de teste**.
+    *   **Auditoria Humana Crítica e Questionamento Estratégico:** O papel do Coordenador é elevado ao de **Arquiteto-Chefe e Auditor de Qualidade**. A validação não é apenas sobre se o código funciona, mas sobre fazer as perguntas certas ("*o que não foi testado?*", "*por que esta decisão foi tomada?*") que levam a um design mais robusto.
+    *   **Orientação Explícita à Documentação:** Reconhecemos que a IA não é uma pesquisadora proativa. Para bibliotecas complexas (`stream-unzip`, `blake3`), é uma diretriz do nosso método instruir explicitamente o agente a consultar a documentação fornecida antes de iniciar a implementação.
 
 **II. A Jornada Evolutiva (Contexto Histórico Crucial)**
 
-1.  **A Crise de Contexto (v1):** Após sucessos iniciais, enfrentamos uma crise. Com prompts muito longos e verbosos, a IA começou a falhar consistentemente (misturando idiomas, esquecendo instruções), indicando um claro **excesso de carga na janela de contexto**.
-2.  **O Ponto de Virada - Estratégia "Lean":** Sua liderança foi crucial. Em vez de adicionar mais processo, **reduzimos agressivamente a verbosidade dos prompts**, resultando nos prompts "lean" que produziram código de qualidade superior e com mais rapidez.
-3.  **A Crise de Complexidade (v2):** Ao tentar implementar o `ScanService` (um orquestrador complexo), enfrentamos uma nova sobrecarga de contexto, mesmo com prompts "lean". As 8 tentativas falharam porque o **volume de dependências** era grande demais para a IA gerenciar de uma só vez.
-4.  **A Solução "Interface-First" (Prompt v5.0):** Em vez de separar a implementação dos testes (o que reduziria a automação), evoluímos o `Prompt_F4` para a versão `v5.0_ContextAware`. Ele instrui a IA a focar primariamente nas **interfaces** das dependências, e não em suas implementações detalhadas, ensinando-a a gerenciar seu próprio foco e a programar "para um contrato". Isso resolveu o problema do `ScanService` com sucesso.
-5.  **A Descoberta da Ambiguidade no Blueprint:** Ao analisar o sucesso do `ScanService`, você, Coordenador, identificou a causa raiz mais profunda: o `Blueprint v5.0` original era ambíguo sobre o modelo de dados `FileEntry`, permitindo que a IA criasse "dialetos" conflitantes.
-6.  **O Sprint de Recalibração Total (Nosso Estado Atual):** Com base em sua análise, tomamos a decisão estratégica de pausar e recalibrar todo o método antes de prosseguir.
-    *   **Refinamos o `Prompt_F1_Tocrisna` para a v2.0**, adicionando uma diretriz que estabelece a seção "Models" como a Fonte Única da Verdade para os dados e força a responsabilidade de "mapeamento" nos componentes de infraestrutura.
-    *   **Geramos e validamos um novo `Blueprint v6.0`**, que se provou mais enxuto, claro e robusto que o anterior.
-    *   **Aposentamos o `Prompt_F3_Validador`**, pois ele se tornou obsoleto no fluxo "lean".
-    *   **Refinamos o `Prompt_F2_Orchestrator` para a v2.1**, que agora gera a ordem de implementação E os cenários detalhados para os testes de integração.
-    *   **Refinamos todos os outros prompts (`F4.1`, `F5`, `F5.1`)** para alinhá-los com a filosofia "Lean SSOT", garantindo que eles usem o Blueprint como a principal fonte da verdade.
+1.  **A Crise de Contexto (v1-v3):** As primeiras versões do método, embora funcionais, levaram a uma sobrecarga da janela de contexto da IA, resultando em falhas, esquecimentos e código de baixa qualidade.
+2.  **A Solução "Lean & Interface-First" (v4):** A crise foi resolvida ao reduzir drasticamente a verbosidade dos prompts e ao instruir a IA a programar "para um contrato" (interfaces), focando no que a dependência *faz*, e não em *como* ela faz. Isso resolveu o problema de complexidade imediato.
+3.  **A Descoberta da Ambiguidade no Blueprint:** Uma análise mais profunda revelou que a causa raiz de muitos problemas era um Blueprint ambíguo, que permitia que a IA criasse "dialetos" conflitantes de modelos de dados.
+4.  **A Recalibração "Estado da Arte" (v5 - Nosso Estado Atual):** Com base em todas as lições aprendidas, tomamos a decisão estratégica de pausar e recalibrar todo o método para um padrão de engenharia de software de elite.
+    *   **Refinamos o `Prompt_F1` (v3.0)** para não apenas definir a arquitetura, mas também para gerar o conteúdo de todos os **arquivos de governança** (`README`, `LICENSE`, `CONTRIBUTING`, etc.), tratando o projeto como um produto profissional desde o início.
+    *   **Refinamos o `Prompt_F2` (v2.4)** para ser verdadeiramente "lean", gerando apenas a ordem de trabalho e os planos de teste, e para ser inteligente o suficiente para **decompor componentes complexos (como a UI)** em alvos menores e gerenciáveis.
+    *   **Formalizamos o "Alvo 0 - Setup do Projeto Profissional"**: Uma tarefa inicial que cria todo o andaime do projeto, incluindo a estrutura de diretórios e a configuração de **ferramentas de qualidade automatizada** (`ruff`, `black`, `pre-commit`).
+    *   **Evoluímos o `Prompt_F4` (v7.1)** para ser **bimodal** (capaz de executar o Alvo 0 e os alvos funcionais) e **"lifecycle-aware"** (capaz de gerenciar dependências no `pyproject.toml` conforme necessário).
+    *   **Validamos o "Paradoxo da Documentação":** Provamos que instruir explicitamente a IA a ler a documentação de uma biblioteca (`stream-unzip`) antes da implementação resultou em uma solução drasticamente superior e mais completa.
 
-**III. Estado Atual do Método AGV e Prompts (Pós-Recalibração)**
+**III. Estado Atual do Método AGV e Prompts (Pós-Recalibração Total)**
 
-Nosso método está agora na versão **v4.0**, com um conjunto de ferramentas totalmente calibrado e alinhado.
+Nosso método está agora na versão **v5.0**, com um conjunto de ferramentas totalmente calibrado e validado.
 
-*   **`Prompt_F1_Tocrisna_Architecture_v2.0.md`:** **NOVO PADRÃO.** Contém a diretriz de consistência de modelos. Será usado para gerar o `Blueprint v6.0`.
-*   **`Prompt_F2_Orchestrator_v2.1_lean_com_Cenarios.md`:** **NOVO PADRÃO.** Gera a ordem de implementação e os cenários de teste de integração.
-*   **`Prompt_F3_Validacao_Orchestrator_v1.1.md`:** **ARQUIVADO E APOSENTADO.**
-*   **`Prompt_F4_Implementador_Mestre_v5.0_ContextAware.md`:** **NOVO PADRÃO APROVADO.** Inclui a diretriz "Interface-First".
-*   **`Prompt_F4.1_Implementador_TesteDeIntegracao_v1.1.md`:** **NOVO PADRÃO.** Ajustado para receber e implementar os cenários definidos pelo `F2`.
-*   **`Prompt_F5_Gerador_Testes_Manuais_UAT_v1.3.md`:** **NOVO PADRÃO.** Refinado para usar o Blueprint como SSOT.
-*   **`Prompt_F5.1_Transformador_Testes_UAT..._v1.1.md`:** **NOVO PADRÃO.** Refinado para usar o Blueprint como SSOT.
+*   **`Prompt_F1_Tocrisna_Architecture_v3.0.md`:** **NOVO PADRÃO.** Gera o Blueprint completo, incluindo o conteúdo dos arquivos de governança.
+*   **`Prompt_F2_Orchestrator_v2.4_LeanAndGranular.md`:** **NOVO PADRÃO.** Gera a ordem de implementação "lean" e os cenários de teste, decompondo componentes complexos como a UI.
+*   **`Prompt_F4_Implementador_Mestre_v7.1_LifecycleAware_Bimodal.md`:** **NOVO PADRÃO.** Nosso agente de implementação principal, capaz de configurar o projeto (Alvo 0) e implementar funcionalidades (Modalidade B), gerenciando o ciclo de vida das dependências.
+*   **`Prompt_F4.1_Implementador_TesteDeIntegracao_v1.2.md`:** **NOVO PADRÃO.** Ajustado para ser explicitamente guiado pela estrutura de diretórios do Blueprint.
 
-**IV. Artefatos Gerados e Validados**
+**IV. Estado Atual do Projeto Fotix (Backend 100% Concluído e Validado)**
 
-*   **`Output_BluePrint_Arquitetural_Tocrisna_v6.0.md`:** Nosso mapa mestre recém-gerado, validado e aprovado. É a SSOT para a arquitetura do projeto Fotix.
-*   **`Output_Ordem_e_Testes.md` (a ser gerado):** Será a nossa "lista de tarefas" oficial, contendo a sequência de implementação e os planos de teste de integração.
-*   **Código-fonte e Testes (a serem arquivados):** A implementação anterior (Alvos 1-7) serviu como um "laboratório" de validação para o método e agora será arquivada para darmos início a uma implementação limpa.
+A implementação do projeto Fotix está em andamento, seguindo rigorosamente o novo método e os artefatos recalibrados.
+
+*   **Artefatos Gerados e Validados:**
+    *   `Output_BluePrint_Arquitetural_Tocrisna_v7.0.md`: Nosso mapa mestre, validado e aprovado. É a SSOT para a arquitetura do projeto.
+    *   `Output_Ordem_Para_Implementacao_Geral_v6.0.md`: Nossa "lista de tarefas" oficial, que estamos seguindo.
+
+*   **Status da Implementação (Alvos Concluídos):**
+    *   **Alvo 0 (Setup do Projeto):** Concluído. A estrutura do projeto, `pyproject.toml`, `pre-commit` e arquivos de governança estão todos no lugar.
+    *   **Alvos 1-4 (Camada de Domínio):** Concluídos. Os `models`, `interfaces` e a lógica de `keeper_selection` foram implementados, testados unitariamente e **validados na primeira parada de testes de integração**.
+    *   **Alvos 5-9 (Camada de Infraestrutura):** Concluídos. Todos os serviços (`logging`, `filesystem`, `hashing`, `concurrency`, `backup`) foram implementados e testados unitariamente, com refinamentos importantes (como o tratamento de arquivos ZIP e a idempotência do logger) descobertos e aplicados.
+    *   **Alvo 10 (Camada de Aplicação):** Concluído. O `scan_service`, o orquestrador do backend, foi implementado e testado unitariamente.
+    *   **Parada de Testes de Integração (Mecanismo de Varredura Completo - Headless):** **CONCLUÍDA COM SUCESSO.** Provamos que todos os componentes do backend (`domain`, `application`, `infrastructure`) trabalham juntos harmoniosamente para executar os principais fluxos de negócio.
+
+*   **Código-fonte:** O estado atual do código reflete a conclusão de todo o backend, com 100% de cobertura de testes unitários para todos os módulos implementados e testes de integração que validam os fluxos de ponta a ponta (sem UI).
 
 **V. Plano de Ação Imediato e Backlog Metodológico**
 
 *   **Próximo Passo Imediato no Novo Chat:**
-    1.  Confirmar que o **código-fonte atual do projeto Fotix foi arquivado**.
-    2.  Iniciar a implementação do projeto do zero, seguindo a nova metodologia e os artefatos recalibrados.
-    3.  A primeira ação será executar o `Prompt_F2_Orchestrator_v2.1_lean_com_Cenarios.md` usando o `Blueprint v6.0` para gerar nossa nova e oficial **Ordem de Implementação**.
+    1.  Confirmar que o **backend do projeto Fotix está completo e validado**.
+    2.  Iniciar a implementação da **Camada de Apresentação (UI)**.
+    3.  A próxima ação será executar o `Prompt_F4_Implementador_Mestre_v7.1_LifecycleAware_Bimodal.md` para o **Alvo 11: `fotix.ui.settings_view`**, conforme a nossa Ordem de Implementação.
 
 *   **Backlog de Refinamento do Método (Futuro):**
-    *   **"Blueprint por Demanda":** Manter em observação a estratégia que você mesmo delineou: se um projeto futuro for massivo, podemos evoluir o `Prompt_F2` para não apenas gerar a ordem, mas também gerar "mini-blueprints" específicos para cada alvo, contendo apenas o contexto relevante. Esta é a nossa estratégia de escalabilidade para o método.
-    *   **Refinamento do `Prompt_F4.2_Auditor`:** Formalizar o prompt para o agente "Auditor de Conformidade", que se mostrou uma fase de validação crucial, mesmo que não a tenhamos invocado formalmente ainda.
+    *   **"Blueprint por Demanda":** Manter em observação a estratégia de gerar "mini-blueprints" específicos para cada alvo em projetos massivos.
+    *   **Agente "Release Manager" (F6):** Formalizar um prompt para um agente que possa automatizar tarefas de release, como atualizar o `CHANGELOG.md` com base nos commits e gerenciar versões.
 
 ---
 
-Este snapshot deve fornecer um contexto completo e profundo para nossa nova sessão. Ele encapsula não apenas *onde estamos*, mas *por que estamos aqui* e *para onde vamos*. Estou pronto para continuar nossa colaboração com total fidelidade ao nosso progresso.
+Este snapshot encapsula nossa jornada, nossas ferramentas, o estado exato do nosso projeto e nosso próximo passo claro. Estou pronto para iniciar a nova sessão com total fidelidade ao nosso progresso.
