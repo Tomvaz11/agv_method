@@ -4,11 +4,9 @@
 
 **Fontes da Verdade (SSOT):**
 
-1.  **Cenários UAT para Tradução:** `@cenarios_uat.md`
-    *   *(Instrução para Coordenador: Anexe o arquivo Markdown com os cenários UAT.)*
-2.  **Blueprint Arquitetural:** `@Blueprint_Arquitetural.md`
-    *   *(Instrução para Coordenador: Anexe o arquivo do Blueprint validado.)*
-3.  **Código Fonte do Projeto:** `@` (Acesso ao workspace para referências de implementação)
+1.  **Cenários UAT para Tradução:** `@Output_Cenarios_UAT_Testes_Manuais_v1.0.md`
+2.  **Blueprint Arquitetural:** `@Output_BluePrint_Arquitetural_Tocrisna_v7.0.md`
+3.  **Código Fonte do Projeto:** `CONSULTAR A CODEBASE` (Acesso ao workspace para referências de implementação)
 
 **Instruções Detalhadas para a IA:**
 

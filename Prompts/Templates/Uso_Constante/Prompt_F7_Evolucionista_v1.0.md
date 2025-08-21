@@ -27,16 +27,98 @@ Sua tarefa é modificar um projeto de software existente para corrigir um bug, r
 ### **TAREFA DE EVOLUÇÃO (Fornecida pelo Coordenador)**
 
 **1. Descrição da Tarefa:**
-[O Coordenador insere aqui a descrição em linguagem natural do bug (incluindo tracebacks de erro, se houver), da refatoração desejada ou da nova funcionalidade.]
+Pedido de Correção: Travamento da Interface com Grande Volume de Dados
+Problema Identificado
+A aplicação Fotix está travando na tela de resultados quando processa grandes volumes de dados. Especificamente:
+
+Cenário: Varredura de 69.939 arquivos resultando em 6.917 conjuntos de duplicatas
+Sintoma: Interface trava após completar a varredura, não consegue carregar a tela de resultados
+Causa Raiz: O método ResultsView.set_results() está tentando criar 6.917 widgets DuplicateSetWidget simultaneamente, causando sobrecarga de memória e travamento da thread principal da UI
+Solução Requerida
+Implemente um sistema de paginação inteligente na ResultsView para resolver o problema de performance com os seguintes requisitos:
+
+1. Sistema de Paginação
+- Limite de 50 conjuntos de duplicatas por página
+- Carregamento sob demanda (lazy loading) - apenas página atual na memória
+- Cálculo automático do número total de páginas: math.ceil(total_items / items_per_page)
+2. Controles de Navegação
+- Botões "Anterior" e "Próxima" para navegação entre páginas
+- Label informativo mostrando: "Página X de Y | Conjuntos A-B de Total"
+- Botão "Carregar Todos" com aviso para casos extremos (com confirmação do usuário)
+3. Preservação da Funcionalidade
+- O método _confirm_deletion() deve funcionar com TODOS os conjuntos, não apenas os da página atual
+- Modificações do usuário (seleção manual de keeper) devem ser preservadas entre navegações
+- Compatibilidade total com funcionalidades existentes
+
+Implementação Técnica
+Modificações no src/fotix/ui/results_view.py:
+
+1. Adicionar variáveis de paginação no construtor:
+```
+self._current_page: int = 0
+self._items_per_page: int = 50
+self._total_pages: int = 1
+```
+
+2. Substituir o loop de criação de widgets no set_results():
+```
+# Implementa paginação para grandes volumes de dados
+self._current_page = 0
+self._items_per_page = 50
+self._total_pages = math.ceil(len(scan_result.duplicate_sets_found) / self._items_per_page)
+
+# Adiciona controles de paginação se necessário
+if self._total_pages > 1:
+    self._add_pagination_controls()
+
+# Carrega a primeira página
+self._load_page(0)
+```
+
+3. Implementar métodos de paginação:
+- _add_pagination_controls() - Cria botões e labels de navegação
+- _load_page(page_number) - Carrega widgets de uma página específica
+- _clear_current_page_widgets() - Remove widgets da página atual preservando controles
+- _next_page() / _previous_page() - Navegação entre páginas
+- _load_all_pages() - Carrega todos os widgets (com confirmação)
+
+4. Ajustar _confirm_deletion() para trabalhar com paginação:
+```
+if self._total_pages > 1:
+    # Usa os dados originais do scan_result
+    updated_duplicate_sets = self._current_scan_result.duplicate_sets_found.copy()
+    
+    # Aplica modificações apenas dos widgets visíveis na página atual
+    current_page_start = self._current_page * self._items_per_page
+    for i, widget in enumerate(self._duplicate_set_widgets):
+        original_index = current_page_start + i
+        if original_index < len(updated_duplicate_sets):
+            updated_duplicate_sets[original_index] = widget.get_duplicate_set()
+```
+
+Critérios de Aceitação
+1. Performance: Interface deve carregar em segundos mesmo com 6.917+ conjuntos
+2. Funcionalidade: Confirmação de exclusão deve processar TODOS os conjuntos
+3. Usabilidade: Navegação intuitiva entre páginas
+4. Compatibilidade: Nenhuma funcionalidade existente deve ser quebrada
+5. Testes: Criar testes unitários para validar a paginação
+
+Resultado Esperado
+Após a implementação:
+
+- Interface responsiva independente do volume de dados
+- Navegação fluida entre páginas de resultados
+- Funcionalidade completa preservada
+- Memória otimizada (apenas 50 widgets por vez)
+- Experiência do usuário melhorada significativamente
 
 **2. Contexto Inicial (Arquivos Relevantes):**
-[O Coordenador anexa aqui os arquivos `.py` e `.md` (como o `@Blueprint_Arquitetural.md`) que a IA deve analisar para completar a tarefa.]
-
+Para contexto @Output_BluePrint_Arquitetural_Tocrisna_v7.0.md, e tudo o que precisar na minha codebase
 ---
 
 ### **FORMATO DO OUTPUT ESPERADO**
 
-Você deve fornecer um relatório claro e conciso seguido pelos blocos de código completos para cada arquivo modificado.
+Você deve fornecer um relatório claro e conciso seguido pelos blocos de código completos para cada arquivo modificado. Salve-o na pasta @Fase4_Evolucionista_Resumos.
 
 ```markdown
 ### Resumo da Evolução
