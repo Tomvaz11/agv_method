@@ -1,8 +1,8 @@
-# AGV Prompt: IntegradorTester v1.3 - Geração de Testes de Integração Guiada
+# AGV Prompt: IntegradorTester v1.2 - Geração de Testes de Integração Guiada
 
 **Tarefa Principal:** Analisar o conjunto de módulos especificados, o Blueprint Arquitetural, e os **cenários de integração já definidos** para gerar testes de integração robustos (`pytest`) que verifiquem a correta colaboração entre esses módulos.
 
-**Contexto Essencial (Fornecido pelo usuário):**
+**Contexto Essencial (Fornecido pelo Coordenador):**
 
 1. **Módulos Alvo da Integração (O Grupo Atual):**
    - `Alvo 0`, `iabank.settings`, `iabank.domain.models (Tenant, User)`, `iabank.api (Auth, Errors)`, `iabank.infrastructure (Tenancy)`
@@ -26,9 +26,12 @@
 3. **Implementar Testes de Integração:**
 
    - Escreva o código dos testes (`pytest`) nos arquivos corretos.
-   - **Estrutura de Testes Mandatória:** Os testes devem ser colocados no diretório `tests/integration/`. Dentro dele, organize os arquivos de teste por **funcionalidade** ou **ponto de entrada** que está sendo testado. Por exemplo, testes que validam os endpoints de autenticação devem ir para `tests/integration/api/test_authentication.py`. Testes que validam o middleware de tenancy devem ir para `tests/integration/infrastructure/test_tenancy_middleware.py`.
+   - **Estrutura de Testes Mandatória:** Os testes de integração devem ser organizados em diretórios que reflitam a **camada principal** sendo testada, conforme a estrutura do Blueprint. Por exemplo:
+     - Testes que validam a `Lógica de Domínio` devem ir para `tests/test_domain/`.
+     - Testes que validam a `Camada de Aplicação` devem ir para `tests/test_application/`.
+     - Testes que validam a `Camada de Infraestrutura` devem ir para `tests/test_infrastructure/`.
    - Crie fixtures `pytest` para setup/teardown de dados ou serviços.
-   - **Padrão de Teste:** Para interações com a camada de persistência, priorize o uso de um **banco de dados de teste real** (ex: um banco de dados em memória como H2/SQLite, ou uma instância de teste gerenciada pelo framework, como a fornecida pelo `pytest-django`). Isso garante que a integração com o banco de dados (queries, transações, constraints) seja validada realisticamente. Para dependências externas ao banco de dados (ex: APIs de terceiros, envio de e-mails), use mocks (`unittest.mock`) ou classes "Fake" (implementações leves em memória).
+   - **Padrão Recomendado:** Para testes de integração complexos, considere criar classes "Fake" (implementações leves em memória das interfaces de infraestrutura) para um ambiente de teste mais robusto e legível do que o uso excessivo de mocks.
 
 4. **Aplicar Boas Práticas de Teste de Integração:**
 
@@ -36,7 +39,6 @@
    - Use implementações reais dos módulos _dentro_ do escopo. Para dependências _fora_ do escopo, use mocks ou fakes.
    - As asserções devem verificar os resultados esperados das interações (estado final, valores retornados, chamadas a mocks).
    - Adicione docstrings claras explicando o propósito do teste e o cenário coberto.
-   - **Ferramentas de Teste de API:** Para testar os endpoints da API, utilize as **ferramentas de cliente de teste fornecidas pelo framework web** (ex: o `APIClient` do Django REST Framework, o `TestClient` do FastAPI). Essas ferramentas permitem simular requisições HTTP de forma eficiente, sem a necessidade de levantar um servidor web real, testando diretamente a aplicação.
 
 5. **Gerar Relatório Detalhado:**
    - Forneça um relatório claro, seguindo a estrutura abaixo:
