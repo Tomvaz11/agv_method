@@ -1,4 +1,4 @@
-# AGV Prompt Template: Tocrisna v7.2 - Definição da Arquitetura Técnica e de Produto
+# AGV Prompt Template: Tocrisna v7.4 - Definição da Arquitetura Técnica e de Produto
 
 ## Tarefa Principal
 

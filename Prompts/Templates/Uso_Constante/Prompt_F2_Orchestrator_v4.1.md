@@ -1,4 +1,4 @@
-# AGV Prompt: OrchestratorHelper v3.9 (Granularidade Máxima)
+# AGV Prompt: OrchestratorHelper v4.1 (Granularidade Máxima)
 
 **Tarefa Principal:** Analisar o `@Blueprint_Arquitetural.md`, que é a fonte única da verdade sobre a arquitetura. Suas responsabilidades são: (1) Derivar uma ordem de implementação lógica e (2) Gerar cenários chave para os Testes de Integração.
 

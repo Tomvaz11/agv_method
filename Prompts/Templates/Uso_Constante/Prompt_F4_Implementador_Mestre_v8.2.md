@@ -1,4 +1,4 @@
-# AGV Prompt: ImplementadorMestre v8.0 - Implementação de Módulo Funcional
+# AGV Prompt: ImplementadorMestre v8.2 - Implementação de Módulo Funcional
 
 **Tarefa Principal:** Implementar o componente de software alvo, aderindo estritamente ao `Blueprint Arquitetural` e às diretrizes abaixo.
 
