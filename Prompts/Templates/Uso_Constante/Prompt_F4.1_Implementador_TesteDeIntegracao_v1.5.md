@@ -5,7 +5,7 @@
 **Contexto Essencial (Fornecido pelo usuário):**
 
 1. **Módulos Alvo da Integração (O Grupo Atual):**
-   - `Alvo 0`, `iabank.core` (Modelos, Auth, Middleware, CRUD Usuários)
+   - `PARADA DE TESTES DE INTEGRAÇÃO T4`
    - _(Instrução para Coordenador: Anexar os arquivos .py destes módulos.)_
 2. **Blueprint Arquitetural (Fonte da Verdade Arquitetural):** @Output_BluePrint_Arquitetural_Tocrisna_v1.0.md
 3. **Ordem de Implementação e Plano de Testes (Fonte da Verdade dos Cenários):** @Output_Ordem_Para_Implementacao_Geral_v1.0.md
